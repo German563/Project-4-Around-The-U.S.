@@ -67,7 +67,7 @@
             overflow: hidden;
            }
     
-    .cards:last-of-type {
+    .card:last-of-type {
         margin-top: 20px;
     }
     .card__gallery {
