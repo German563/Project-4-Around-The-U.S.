@@ -36,13 +36,17 @@
     font-weight: 900;
     font-size: 24px;
     line-height: 1.2em;
-    
-    }
-    .card__text_ellipsis {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+ 
+    
     }
+   /* .card__ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; */
+   }
     .card__button {
         background-color: white;
         border: none;
@@ -60,10 +64,14 @@
         display: flex;
         flex-direction: row;
         gap:17px;
-        list-style: none;
-        white-space: nowrap;
-        flex-wrap: wrap;
+
     }
+    /* .card__ellipsis {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+           }
+    } */
     .cards:last-of-type {
         margin-top: 20px;
     }
@@ -89,12 +97,11 @@
     font-weight: 900;
     font-size: 24px;
     line-height: 1.2em;
-    }
-    .card__text_ellipsis {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     }
+
     .card__button {
         background-color: white;
         border: none;
