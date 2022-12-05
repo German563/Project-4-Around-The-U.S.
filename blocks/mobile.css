@@ -1,0 +1,184 @@
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    
+
+    .page {
+        max-width: 1280px;
+        background-color: black;
+        margin: 0 auto;
+        font-size: 24px;
+        line-height: 1.2em;
+
+    }
+    .header__wrapper {
+margin: 0;
+    }
+    .header__title {
+        padding: 28px 0 32px 27px;
+        margin: 0;
+        color: white;
+        }
+    .header__description {
+            color: white;
+            font-size: 12px;
+            vertical-align:text-top;
+            margin-left: -12px;
+        }
+    .header__divider {
+            flex-grow: 1;
+            border-bottom: 1px solid #545454;
+            margin-top: 41px;
+            margin-bottom: 36px;
+        }
+        
+      
+    .gallery__describtion {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        margin-top: 18px;
+        margin-bottom: 36px;
+    }
+    .gallery__text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 150px;
+        margin: 0;
+    font-family: 'Inter';
+    font-weight: 500;
+    line-height: 48px;
+    font-size: 22px;
+
+
+    
+    }
+    .gallery__column {
+        display: flex;
+        flex-direction: column;
+        margin-left: 25px;
+        
+    }
+    .gallery__subtext {
+        font-family: 'Inter';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.1em;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 36px;
+        
+    
+    }
+        .gallery__pencil {
+        color: white;
+        background-color: black;
+        width: 18px;
+        height: 18px;
+        border: 1px solid white;
+        background-image: url(/images/pencil.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        
+    }
+    .gallery__pencil:hover {
+        opacity: 0.6;
+    }
+    .pencil__wrapper {
+    margin: 0 auto;
+
+    }
+    .gallery__button {
+        display: flex;
+        justify-content:center ;
+        align-items: center;
+        width:  282px;
+        height: 50px;
+        border: solid 2px white;
+        background-color: black; 
+        
+    
+
+    
+       
+    }
+    .gallery__button:hover {
+        opacity: 0.6;
+    }
+    .gallery__image {
+    
+        background-image: url(/images/jacques-cousteau.jpg);
+        background-color: black;
+        width: 120px;
+        height: 120px;
+        background-repeat: no-repeat;
+        border-radius: 100%;
+        background-position: center;
+        background-size: cover;
+    
+    
+    }
+    .cards {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap:17px;
+        list-style: none;
+        align-items: center;
+    }
+    .cards:last-of-type {
+        margin-top: 20px;
+    }
+    .card__gallery {
+        width: 282px;
+        height: 361px;
+        background-color: #ffffff;
+        border-radius: 10px;
+
+    }
+    .card__image {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 282px;
+        height: 282px;
+    
+    }
+
+    
+    .card__text {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+    font-family: 'Inter';
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1.2em;
+    
+    }
+    .eclips {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    }
+    .card__button {
+        background-color: white;
+        border: none;
+        height: 18px;
+    }
+    .card__button:hover {
+        opacity: 0.5;
+    }
+    
+    .copyright__text {
+        font-size: 18px;
+        line-height: 1.2em;
+        font-weight: 400;
+        font-family: 'Inter';
+        color: #545454;
+        display: block;
+        margin-top: 60px;
+        padding-bottom: 36px;
+        margin-left: 19px;
+    }
+    }
+    
