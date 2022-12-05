@@ -1,0 +1,106 @@
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+
+    .cards {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap:17px;
+        list-style: none;
+        align-items: center;
+    }
+    .cards:last-of-type {
+        margin-top: 20px;
+    }
+    .card__gallery {
+        width: 282px;
+        height: 361px;
+        background-color: #ffffff;
+        border-radius: 10px;
+
+    }
+    .card__image {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 282px;
+        height: 282px;
+    
+    }
+
+    
+    .card__text {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+    font-family: 'Inter';
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1.2em;
+    
+    }
+    .card__text_ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    }
+    .card__button {
+        background-color: white;
+        border: none;
+        height: 18px;
+    }
+    .card__button:hover {
+        opacity: 0.5;
+    }
+}
+@media only screen and (min-width: 768px) {
+
+    .cards {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        gap:17px;
+        list-style: none;
+        white-space: nowrap;
+        flex-wrap: wrap;
+    }
+    .cards:last-of-type {
+        margin-top: 20px;
+    }
+    .card__gallery {
+        width: 282px;
+        height: 361px;
+        background-color: white;
+        border-radius: 10px;
+    }
+    .card__image {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 282px;
+        height: 282px;
+    
+    }
+    
+    .card__text {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+    font-family: 'Inter';
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1.2em;
+    }
+    .card__text_ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    }
+    .card__button {
+        background-color: white;
+        border: none;
+        height: 18px;
+    }
+    .card__button:hover {
+        opacity: 0.5;
+    }
+}
