@@ -1,7 +1,7 @@
 @media only screen and (min-width: 320px) and (max-width: 768px) {
 
 
-    .footer__text {
+    .footer__copyright {
         font-size: 18px;
         line-height: 1.2em;
         font-weight: 400;
@@ -14,9 +14,9 @@
     }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 5868px) {
+@media only screen and (min-width: 768px)  {
 
-    .footer__text {
+    .footer__copyright {
         font-size: 18px;
         line-height: 1.2em;
         font-weight: 400;
