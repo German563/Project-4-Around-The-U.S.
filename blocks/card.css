@@ -9,9 +9,7 @@
         list-style: none;
         align-items: center;
     }
-    .card:last-of-type {
-        margin-top: 20px;
-    }
+
     .card__gallery {
         width: 282px;
         height: 361px;
@@ -67,9 +65,7 @@
             overflow: hidden;
            }
     
-    .card:last-of-type {
-        margin-top: 20px;
-    }
+
     .card__gallery {
         width: 282px;
         height: 361px;
