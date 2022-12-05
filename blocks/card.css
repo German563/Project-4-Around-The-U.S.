@@ -42,11 +42,7 @@
  
     
     }
-   /* .card__ellipsis {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden; */
-   }
+
     .card__button {
         background-color: white;
         border: none;
