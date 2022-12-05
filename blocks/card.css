@@ -56,7 +56,8 @@
         margin: 0;
         display: flex;
         flex-direction: row;
-        gap:17px;
+        row-gap:17px;
+        column-gap: 20px;
 
     }
     .card__ellipsis {
