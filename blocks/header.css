@@ -8,14 +8,14 @@
 
 
     .header {
-        
+
         border-bottom: 1px solid #545454;
         padding-bottom: 32px;
     }
 }
 
 @media only screen and (min-width: 768px) {
-    .header{
+    .header {
         border-bottom: 1px solid #545454;
         padding-bottom: 41px;
     }

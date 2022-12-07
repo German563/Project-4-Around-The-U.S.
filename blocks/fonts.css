@@ -3,11 +3,13 @@
     src: url(../fonts/Inter-Black.ttf);
     font-weight: 900;
 }
+
 @font-face {
     font-family: 'Inter';
     src: url(../fonts/Inter-Regular.ttf);
     font-weight: 500;
 }
+
 @font-face {
     font-family: 'Inter';
     src: url(../fonts/Inter-Medium.ttf);

@@ -1,37 +1,39 @@
-
 @media only screen and (min-width: 320px) and (max-width: 768px) {
 
     .card__area {
         flex-direction: column;
     }
 }
-@media only screen and (min-width: 768px)  {
+
+@media only screen and (min-width: 768px) {
 
     .card__area {
-
         flex-direction: row;
         flex-wrap: wrap;
-
     }
 
 }
+
 .card {
     max-width: 1080px;
     margin: 0 auto;
 }
+
 .card__area {
     padding: 0;
     margin: 0;
     display: flex;
-    gap:17px;
+    gap: 17px;
     list-style: none;
     align-items: center;
 }
+
 .card__ellipsis {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-   }
+}
+
 .card__image {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -39,6 +41,7 @@
     height: 282px;
 
 }
+
 .card__text {
     display: flex;
     align-items: center;
@@ -48,19 +51,22 @@
     line-height: 1.2em;
     justify-content: space-between;
     margin: 0 20px;
-    }
-    .card__button {
-        background-color: transparent;
-        border: none;
-        height: 18px;
-        margin-bottom: 10px;
-        cursor: pointer;
-    }
-    .card__button:hover {
-        opacity: 0.5;
-    }
-    .card__gallery {
-        width: 282px;
-        background-color: white;
-        border-radius: 10px;
-    }
+}
+
+.card__button {
+    background-color: transparent;
+    border: none;
+    height: 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.card__button:hover {
+    opacity: 0.5;
+}
+
+.card__gallery {
+    width: 282px;
+    background-color: white;
+    border-radius: 10px;
+}

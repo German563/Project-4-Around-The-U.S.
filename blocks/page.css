@@ -1,15 +1,12 @@
    .page {
-        background-color: black;
-        margin: 0 auto;
-        font-size: 24px;
-        line-height: 1.2em;
-        height: auto;
+       background-color: black;
+       margin: 0 auto;
+       font-size: 24px;
+       line-height: 1.2em;
+   }
 
-    }
-
-@media only screen and (min-width: 768px) {
-    .page {
-        padding: 45px 200px 60px 200px;
-
-    }
-}
+   @media only screen and (min-width: 768px) {
+       .page {
+           padding: 45px 200px 60px 200px;
+       }
+   }

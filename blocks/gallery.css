@@ -28,6 +28,7 @@
         margin-bottom: 36px;
         justify-content: center;
     }
+
     .pencil__wrapper {
         margin: 0 auto;
 
@@ -39,7 +40,7 @@
 
 
     .gallery__image {
-        margin-top: 6px ;
+        margin-top: 6px;
         margin-bottom: 26px;
     }
 }
@@ -139,6 +140,7 @@
     cursor: pointer;
 
 }
+
 .gallery__button:hover {
     opacity: 0.6;
 }
@@ -153,4 +155,3 @@
     background-position: center;
     background-size: cover;
 }
-
