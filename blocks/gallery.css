@@ -1,27 +1,12 @@
 @media only screen and (max-width: 768px) {
-
-
-    .gallery__describtion {
-        color: white;
-        display: flex;
+    .gallery__text {
         flex-direction: column;
-        margin-top: 18px;
-        margin-bottom: 36px;
     }
 
     .gallery__text {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-left: 150px;
-        margin: 0;
-        font-family: 'Inter-medium', sans-serif;
-        font-weight: 500;
+
         line-height: 1.1em;
         font-size: 22px;
-
-
-
     }
 
     .gallery__column {
@@ -30,34 +15,18 @@
         margin-left: 25px;
 
     }
-
-    .gallery__subtext {
-        font-family: 'Inter-regular', sans-serif;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 1.1em;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 36px;
-
-
-    }
-
     .gallery__pencil {
-        color: white;
-        background-color: black;
         width: 18px;
         height: 18px;
-        border: 1px solid white;
-        background-image: url(../images/pencil.svg);
-        background-repeat: no-repeat;
-        background-position: center;
-
+    }
+    .gallery__subtext {
+        font-size: 14px;
+        line-height: 1.1em;
+        margin-bottom: 36px;
+        justify-content: center;
     }
 
-    .gallery__pencil:hover {
-        opacity: 0.6;
-    }
+
 
     .pencil__wrapper {
         margin: 0 auto;
@@ -65,13 +34,7 @@
     }
 
     .gallery__button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 282px;
-        height: 50px;
-        border: solid 2px white;
-        background-color: black;
     }
 
     .gallery__button:hover {
@@ -80,71 +43,35 @@
 
     .gallery__image {
 
-        background-image: url(../images/jacques-cousteau.jpg);
-        background-color: black;
-        width: 120px;
-        height: 120px;
-        background-repeat: no-repeat;
-        border-radius: 100%;
-        background-position: center;
-        background-size: cover;
+        margin-bottom: 26px;
 
 
     }
+
 }
 
 @media only screen and (min-width: 768px) {
 
     .gallery__describtion {
-        color: white;
-        display: flex;
-        flex-direction: column;
-        margin-top: 18px;
         margin-left: 28px;
-        margin-bottom: 36px;
-    }
 
+    }
     .gallery__text {
-        display: flex;
-        align-items: center;
-        margin-left: 150px;
-        margin: 0;
-        font-family: 'Inter-medium', sans-serif;
-        font-weight: 500;
         line-height: 1.2em;
         font-size: 42px;
 
     }
-
-    .gallery__column {
-        display: flex;
-        flex-direction: column;
-        margin-left: 25px;
-
-    }
-
     .gallery__subtext {
-        font-family: 'Inter-regular', sans-serif;
-        font-weight: 400;
         font-size: 18px;
         line-height: 1.2em;
 
     }
-
     .gallery__pencil {
-        color: white;
-        background-color: black;
         width: 24px;
         height: 24px;
-        border: 1px solid white;
-        background-image: url(../images/pencil.svg);
-        background-repeat: no-repeat;
-        background-position: center;
-
     }
-
-    .gallery__pencil:hover {
-        opacity: 0.6;
+    .gallery__button {
+        width: 150px;
     }
 
     .gallery__wrapper {
@@ -152,33 +79,60 @@
     }
 
     .gallery__button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 150px;
-        height: 50px;
-        border: solid 2px white;
-        background-color: black;
         margin: 0 auto;
-
-
     }
+}
 
-    .gallery__button:hover {
-        opacity: 0.6;
-    }
+.gallery__describtion {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin-top: 18px;
+    margin-bottom: 36px;
+}
 
-    .gallery__image {
+.gallery__text {
+    display: flex;
+    align-items: center;
+    margin-left: 150px;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
 
-        background-image: url(../images/jacques-cousteau.jpg);
-        background-color: black;
-        min-width: 120px;
-        min-height: 120px;
-        background-repeat: no-repeat;
-        border-radius: 100%;
-        background-position: center;
-        background-size: cover;
+.gallery__subtext {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    display: flex;
 
+}
+.gallery__pencil {
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    background-image: url(../images/pencil.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.gallery__pencil:hover {
+    opacity: 0.6;
+}
+.gallery__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border: solid 2px white;
+    background-color: black;
+}
+.gallery__image {
 
-    }
+    background-image: url(../images/jacques-cousteau.jpg);
+    background-color: black;
+    width: 120px;
+    height: 120px;
+    background-repeat: no-repeat;
+    border-radius: 100%;
+    background-position: center;
+    background-size: cover;
 }

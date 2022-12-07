@@ -1,103 +1,61 @@
+
 @media only screen and (min-width: 320px) and (max-width: 768px) {
 
-    .card {
-        padding: 0;
-        margin: 0;
-        display: flex;
+    .card__area {
         flex-direction: column;
-        gap:17px;
-        list-style: none;
-        align-items: center;
-    }
-
-    .card__gallery {
-        width: 282px;
-        height: 361px;
-        background-color: #ffffff;
-        border-radius: 10px;
-
-    }
-    .card__image {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        width: 282px;
-        height: 282px;
-    
-    }
-
-    
-    .card__text {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 20px;
-    font-family: 'Inter-black', sans-serif;
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 1.2em;
-    }
-    .card__ellipsis {
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-       }
-    .card__button {
-        background-color: white;
-        border: none;
-        height: 18px;
-    }
-    .card__button:hover {
-        opacity: 0.5;
     }
 }
 @media only screen and (min-width: 768px)  {
 
-    .card {
-        padding: 0;
-        margin: 0;
-        display: flex;
+    .card__area {
+
         flex-direction: row;
         flex-wrap: wrap;
-        gap:17px;
-
 
     }
-    .card__ellipsis {
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-           }
-    
 
-    .card__gallery {
-        width: 282px;
-        height: 361px;
-        background-color: white;
-        border-radius: 10px;
-    }
-    .card__image {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        width: 282px;
-        height: 282px;
-    
-    }
-    
-    .card__text {
+}
+.card__area {
+    padding: 0;
+    margin: 0;
     display: flex;
-    justify-content: space-between;
-    padding: 20px 20px;
-    font-family: 'Inter-black', sans-serif;
+    gap:17px;
+    list-style: none;
+    align-items: center;
+}
+.card__ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+   }
+.card__image {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 282px;
+    height: 282px;
+
+}
+.card__text {
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
     font-weight: 900;
     font-size: 24px;
     line-height: 1.2em;
+    justify-content: space-between;
+    margin: 0 20px;
     }
-
     .card__button {
-        background-color: white;
+        background-color: transparent;
         border: none;
         height: 18px;
+        margin-bottom: 10px;
     }
     .card__button:hover {
         opacity: 0.5;
     }
-}
+    .card__gallery {
+        width: 282px;
+        background-color: white;
+        border-radius: 10px;
+    }
