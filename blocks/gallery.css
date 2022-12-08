@@ -1,27 +1,27 @@
-.gallery__describtion {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    margin-top: 36px;
-    margin-bottom: 47px;
+.gallery {
+    margin: auto;
+    max-width: 900px;
 }
 
 .gallery__text {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: white;
     align-items: center;
-    margin-left: 150px;
-    margin: 0;
+    margin-top: 36px;
+    margin-bottom: 47px;
     font-family: 'Inter', sans-serif;
     font-weight: 500;
+
 }
 
 .gallery__subtext {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     display: flex;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+
+
 }
 
 .gallery__pencil {
@@ -64,11 +64,19 @@
     background-position: center;
     background-size: cover;
 }
+
+.gallery_eclipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 @media only screen and (max-width: 768px) {
     .gallery__text {
         flex-direction: column;
         line-height: 1.1em;
         font-size: 22px;
+        margin: 0 auto;
     }
 
     .gallery__column {
@@ -80,13 +88,13 @@
     .gallery__pencil {
         width: 18px;
         height: 18px;
+        margin-left: 10px;
     }
 
     .gallery__subtext {
         font-size: 14px;
         line-height: 1.1em;
-        margin-top: 14px;
-        margin-bottom: 36px;
+        margin: 14px;
         justify-content: center;
     }
 
@@ -95,31 +103,31 @@
     }
 
     .gallery__button {
+        margin-bottom: 36px;
         width: 282px;
     }
+
     .gallery__image {
-        margin-top: 6px;
-        margin-bottom: 26px;
+        margin-top: 38px;
+    }
+
+    .gallery__header {
+        margin-top: 26px;
+        margin-bottom: 14px;
     }
 }
 
 @media only screen and (min-width: 768px) {
 
-    .gallery__describtion {
-        margin-left: 28px;
-
-    }
-
     .gallery__text {
         line-height: 1.2em;
         font-size: 42px;
-
     }
 
     .gallery__subtext {
         font-size: 18px;
         line-height: 1.2em;
-        margin-top: 0;
+        margin: 0;
 
 
     }
@@ -136,9 +144,14 @@
 
     .gallery__wrapper {
         margin: 0 auto;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
+    }
+
+    .gallery__header {
+        margin-bottom: 16px;
+        margin-top: 0;
+    }
+
+    .gallery__image {
+        margin: 0;
     }
 }
-
