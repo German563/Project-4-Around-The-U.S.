@@ -68,7 +68,7 @@
     background-size: cover;
 }
 
-.gallery_eclipsis {
+.gallery__eclipsis {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
