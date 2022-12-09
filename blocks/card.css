@@ -69,9 +69,11 @@
     .card__area {
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: center;
     }
 
     .gallery__wrapper {
         margin: 0;
     }
 }
+
