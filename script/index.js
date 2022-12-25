@@ -10,17 +10,17 @@ var galleryTitle = document.querySelector('.gallery__subtext');
 var heartButton = document.querySelectorAll("img[src='./images/heart.svg']");
 
 function toggleModalWindow() {
-modalWindow.classList.toggle("popup_opened");
+    modalWindow.classList.toggle("popup_opened");
 }
 openWindiowButton.addEventListener("click", toggleModalWindow);
 closeWindowButton.addEventListener("click", toggleModalWindow);
 
 
-saveButton.addEventListener ("click", function(){
+saveButton.addEventListener("click", function () {
     galleryName.textContent = nameInput.value;
     galleryTitle.textContent = titleInput.value;
     toggleModalWindow();
 });
 
 
- 
+
