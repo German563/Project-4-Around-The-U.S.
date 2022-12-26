@@ -20,7 +20,7 @@ function openEditProfileModal() {
     fillProfileForm();
     toggleModalWindow();
 }
-openWindiowButton.addEventListener("click", toggleModalWindow);
+openWindiowButton.addEventListener("click", openEditProfileModal);
 closeWindowButton.addEventListener("click", toggleModalWindow);
 
 
