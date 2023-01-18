@@ -30,8 +30,28 @@
     width: 282px;
     height: 282px;
 
+
+}
+.card__wrapper {
+    position: relative;
 }
 
+    .card__delete-button {
+        background-image: url(/images/trash-can.svg);
+        border: none;
+        background-color: transparent;
+        position: absolute;
+        width: 18px;
+        height: 19px;
+        padding: 0;
+        display: block;
+        right: 15px;
+        top: 18px;
+        cursor: pointer;
+}
+.card__delete-button:hover {
+    opacity: 0.5;
+}
 .card__text {
     display: flex;
     align-items: center;
@@ -56,6 +76,9 @@
     background-color: white;
     border-radius: 10px;
 }
+
+
+
 
 @media only screen and (min-width: 320px) and (max-width: 768px) {
 

@@ -36,8 +36,8 @@
 
             </section>
             <section class="card">
-                <ul class="card__area">
-                    <li class="card__gallery">
+                <!-- <ul class="card__area"> -->
+                    <!-- <li class="card__gallery">
                         <div class="card__wrapper">
                             <img class="card__image" src="./images/yosemite-valley.jpg" alt="yosemite-valley">
                         </div>
@@ -104,21 +104,53 @@
                             </h2> <button class="card__button" type="button"><img src="./images/heart.svg"
                                     alt="heart"></button>
                         </div>
-                    </li>
-                </ul>
+                    </li> -->
+                    <template id="card-template">
+                        <li class="card__gallery">
+                            <div class="card__wrapper">
+                                <button type="button" id="deleteButton" class="card__delete-button"></button>
+                                <img id="myImage" class="card__image" src="">
+                            </div>
+                            <div class="card__text">
+                                <h2 class="card__ellipsis">
+                
+                                </h2> <button class="card__button" type="button"><img src="./images/heart.svg" class="hearthButton"
+                                        alt="heart"></button>
+                            </div>
+                        </li>
+                    </template>
+                <!-- </ul> -->
             </section>
-            <section class="popup">
-                <button class="popup__close"> </button>
-                <div class="popup__content">
-                    <h3 class="popup__title">Edit profile</h3>
-                    <form name="profile" class="popup__form" action="" onsubmit="return false">
-                        <input type="text" id="name" name="name" class="popup__input popup__input_type_name"
-                            placeholder="Name">
-                        <input type="text" id="title" name="title" class="popup__input popup__input_type_description"
-                            placeholder="About">
-                        <button type="submit" class="button popup__button">Save</button>
-                    </form>
+            <section class="popup__section">
+                <div class="popup popup_type_edit-profile">
+                    <button class="popup__close"> </button>
+                    <div class="popup__content">
+                        <h3 class="popup__title">Edit profile</h3>
+                        <form name="profile" class="popup__form" action="" onsubmit="return false">
+                            <input type="text" id="nameImg" name="name" class="popup__input popup__input_type_name"
+                                placeholder="Name">
+                            <input type="text" id="titleURL" name="title" class="popup__input popup__input_type_description"
+                                placeholder="About">
+                            <button type="submit" class="button popup__button">Save</button>
+                        </form>
+                    </div>
                 </div>
+<!-- //another popup// -->
+<div class="popup popup_type_add-card">
+    <button class="popup__close" id="closeButtonNewPlace"> </button>
+    <div class="popup__content">
+        <h3 class="popup__title">New place</h3>
+        <form name="profile" class="popup__form" action="" onsubmit="return false">
+            <input type="text" id="nameImg" name="name" class="popup__input popup__input_type_card-name"
+                placeholder="Title">
+            <input type="text" id="titleURL" name="title" class="popup__input popup__input_type_card-link"
+                placeholder="Image link">
+            <button type="submit" class="button popup__button">Create</button>
+        </form>
+    </div>
+</div>
+
+
 
             </section>
         </main>
