@@ -43,26 +43,7 @@ const galleryLink = document.querySelector(".popup__input_type_card-link");
 const galleryNewCardName =  document.querySelector(".popup__input_type_card-name");
 const createButton = document.querySelector(".create__button");
 const newCardTitle = document.querySelector(".popup__title-foto");
-const newCardSrc = document.querySelector(".popup-foto-src");
 const placesList = document.querySelector(".places__list");
-
-
-// initialCards.forEach(card => {
-
-// const cardTemplate = document.querySelector("#card-template").content.querySelector(".card__gallery");
-
-// const cardElement = cardTemplate.cloneNode(true);
-// const cardImage = cardElement.querySelector(".card__image");
-// const cardTitle = cardElement.querySelector(".card__ellipsis");
-
-// cardImage.src = card.link;
-
-// cardTitle.textContent = card.name;
-
-
-// placesList.append(cardElement);
-// });
-
 
 
 function fillProfileForm() {
@@ -141,11 +122,12 @@ const creareNewCard = (props) => {
 
   clonedCard.querySelector("#heart").addEventListener("click", hearthChange);
   function hearthChange () {
-    if (clonedCard.querySelector("#heart").src = "./images/heart.svg") {
-      clonedCard.querySelector("#heart").src = "./images/black-hearth.svg";
-    } else {
-      clonedCard.querySelector("heart").src = "./images/heart.svg";
-    }
+    console.log(clonedCard.querySelector("#heart").src)
+    if (clonedCard.querySelector("#heart").getAttribute("src") === "./images/heart.svg") {
+      clonedCard.querySelector("#heart").setAttribute("src", "./images/black-hearth.svg");
+  } else {
+      clonedCard.querySelector("#heart").setAttribute("src", "./images/heart.svg");
+  }
   }
 
   
@@ -186,19 +168,62 @@ cardImage.src =  document.getElementById("titleURL").value
 cardTitle.textContent = document.getElementById("nameImg").value
 
 // like button for new card elements
+const bigImg = document.querySelector('.popup_type_foto');
+function openBigImg (e) {
+  bigImg.classList.add ("popup_opened");
+  bigImg.style = "background-image: url(" + cardImage.src + " )";
+  newCardTitle.textContent = cardTitle.textContent;
+
+
+}
+cardImg = document.querySelector("#myImage")
+cardImg.addEventListener("click", openBigImg);
+const deletBigImg = document.querySelector("#closeButtonFoto");
+function closeBigImg () {
+  bigImg.classList.remove ("popup_opened");
+  
+}
+deletBigImg.addEventListener("click", closeBigImg);
+
+clonedCard.querySelector(".card__delete-button").addEventListener("click", (e) => {
+  e.target.closest(".card__gallery").remove();
+});
+
+
 
 clonedCard.querySelector("#heart").addEventListener("click", hearthChange);
 
 function hearthChange () {
-  if (clonedCard.querySelector("#heart").src = "./images/heart.svg") {
-    clonedCard.querySelector("#heart").src = "./images/black-hearth.svg";
-  } else {
-    clonedCard.querySelector("heart").src = "./images/heart.svg";
-  }
+  console.log(clonedCard.querySelector("#heart").src)
+  if (clonedCard.querySelector("#heart").getAttribute("src") === "./images/heart.svg") {
+    clonedCard.querySelector("#heart").setAttribute("src", "./images/black-hearth.svg");
+} else {
+    clonedCard.querySelector("#heart").setAttribute("src", "./images/heart.svg");
+}
 }
 
 
+
+
+// делаем большое изображение + убираем
+
 placesList.append(clonedCard);
+function openBigImg () {
+
+  bigImg.classList.add ("popup_opened");
+  bigImg.style = "background-image: url(" + clonedCard.querySelector(".card__image").src + " )";
+  newCardTitle.textContent = clonedCard.querySelector(".card__ellipsis").textContent;
+
+
+  console.log("apple")
+
+}
+clonedCard.querySelector(".card__image").addEventListener("click", openBigImg);
+
+function closeBigImg () {
+  bigImg.classList.remove ("popup_opened"); 
+}
+deletBigImg.addEventListener("click", closeBigImg);
 });
 
 
@@ -219,20 +244,6 @@ const cardsPopulation = () => {
 };
 cardsPopulation();
 
-const newCard = cardTemplate.cloneNode(true);
 
 
-const addNewCard = (props) => {
-  const localName = props.name;
-  const localLink = props.link;
-  const localCardTemplate = props.cardTemplate;
-  const clonedCard = localCardTemplate.cloneNode(true);
-  const cardTitle = document.querySelector("popup__input_type_card-name").value;
-  const cardSrc = document.querySelector("popup__input_type_card-link").value;
-
-
-  cardTitle.textContent = localName;
-  cardSrc.src = localLink;
-  return clonedCard;
-}
 
