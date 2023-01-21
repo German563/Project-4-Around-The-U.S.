@@ -111,6 +111,31 @@
     opacity: 0.8;
 }
 
+.popup_type_foto {
+background-image: url(../images/lago-di-braies.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+/* max-height: 75vh;
+max-width: 75vw; */
+height: 100%;
+width: 100%;
+
+}
+.popup__title-foto {
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+color: #FFFFFF;
+position: absolute;
+bottom: -40px;
+left: 0;
+}
+
+
 @media only screen and (min-width: 320px) and (max-width: 768px) {
 
     .popup {

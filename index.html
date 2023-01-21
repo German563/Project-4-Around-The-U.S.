@@ -36,75 +36,7 @@
 
             </section>
             <section class="card">
-                <!-- <ul class="card__area"> -->
-                    <!-- <li class="card__gallery">
-                        <div class="card__wrapper">
-                            <img class="card__image" src="./images/yosemite-valley.jpg" alt="yosemite-valley">
-                        </div>
-                        <div class="card__text">
-                            <h2 class="card__ellipsis">Yosemite Valle
-
-                            </h2> <button class="card__button" type="button"><img src="./images/heart.svg"
-                                    alt="heart"></button>
-                        </div>
-                    </li>
-                    <li class="card__gallery">
-                        <div class="card__wrapper">
-                            <img class="card__image" src="./images/lake-louise.jpg" alt="lake-louise">
-                        </div>
-                        <div class="card__text">
-                            <h2 class="card__ellipsis">Lake Louise
-
-                            </h2> <button class="card__button" type="button"><img src="./images/heart.svg"
-                                    alt="heart"></button>
-                        </div>
-                    </li>
-                    <li class="card__gallery">
-                        <div class="card__wrapper">
-                            <img class="card__image" src="./images/bald-mountains.jpg" alt="bald-mountains.jpg">
-                        </div>
-                        <div class="card__text">
-                            <h2 class="card__ellipsis">Bald Mountains
-
-                            </h2> <button class="card__button" type="button"><img src="./images/heart.svg"
-                                    alt="heart"></button>
-                        </div>
-                    </li>
-
-                    <li class="card__gallery">
-                        <div class="card__wrapper">
-                            <img class="card__image" src="./images/latemar.jpg" alt="latemar">
-                        </div>
-                        <div class="card__text">
-                            <h2 class="card__ellipsis">Latemar
-
-                            </h2> <button class="card__button" type="button"><img src="./images/heart.svg"
-                                    alt="heart"></button>
-                        </div>
-                    </li>
-                    <li class="card__gallery">
-                        <div class="card__wrapper">
-                            <img class="card__image" src="./images/vanoise-national-park.jpg"
-                                alt="vanoise-national-park">
-                        </div>
-                        <div class="card__text">
-                            <h2 class="card__ellipsis">Vanoise Nationanal Park
-
-                            </h2> <button class="card__button" type="button"><img src="./images/heart.svg"
-                                    alt="heart"></button>
-                        </div>
-                    </li>
-                    <li class="card__gallery">
-                        <div class="card__wrapper">
-                            <img class="card__image" src="./images/lago-di-braies.jpg" alt="lago-di-braies">
-                        </div>
-                        <div class="card__text">
-                            <h2 class="card__ellipsis">Lago di Braies
-
-                            </h2> <button class="card__button" type="button"><img src="./images/heart.svg"
-                                    alt="heart"></button>
-                        </div>
-                    </li> -->
+ <ul class="places__list card__area"></ul>
                     <template id="card-template">
                         <li class="card__gallery">
                             <div class="card__wrapper">
@@ -114,12 +46,12 @@
                             <div class="card__text">
                                 <h2 class="card__ellipsis">
                 
-                                </h2> <button class="card__button" type="button"><img src="./images/heart.svg" class="hearthButton"
+                                </h2> <button class="card__button" type="button" ><img src="./images/heart.svg" class="hearthButton" id="heart"
                                         alt="heart"></button>
                             </div>
                         </li>
                     </template>
-                <!-- </ul> -->
+      
             </section>
             <section class="popup__section">
                 <div class="popup popup_type_edit-profile">
@@ -140,16 +72,24 @@
     <button class="popup__close" id="closeButtonNewPlace"> </button>
     <div class="popup__content">
         <h3 class="popup__title">New place</h3>
-        <form name="profile" class="popup__form" action="" onsubmit="return false">
-            <input type="text" id="nameImg" name="name" class="popup__input popup__input_type_card-name"
+        <form name="card" class="popup__form" action="" onsubmit="return false">
+            <input type="text" id="nameImg" name="nameNew" class="popup__input popup__input_type_card-name"
                 placeholder="Title">
-            <input type="text" id="titleURL" name="title" class="popup__input popup__input_type_card-link"
+            <input type="text" id="titleURL" name="cardLink" class="popup__input popup__input_type_card-link"
                 placeholder="Image link">
-            <button type="submit" class="button popup__button">Create</button>
+            <button type="submit" class="button create__button popup__button">Create</button>
         </form>
     </div>
 </div>
-
+<div class="popup popup_type_foto">
+    <button class="popup__close" id="closeButtonFoto"> </button>
+    <div class="popup__content">
+        
+        <h3 class="popup__title-foto">Lago di Braies
+        </h3>
+        </form>
+    </div>
+</div>
 
 
             </section>
@@ -159,6 +99,8 @@
         </footer>
     </div>
     <script src="./script/index.js" defer></script>
+    <script src="./script/popup.js" defer></script>
+
 </body>
 
 </html>
