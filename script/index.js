@@ -64,7 +64,6 @@ function openEditProfileModal() {
 }
 
 function openAddNewCard() {
-  // fillCardForm();
   openNewWindow();
 }
 openWindiowButton.addEventListener("click", openEditProfileModal);
@@ -130,12 +129,11 @@ const creareNewCard = (props) => {
   }
   }
 
-  
   clonedCard.querySelector(".card__delete-button").addEventListener("click", (e) => {
     e.target.closest(".card__gallery").remove();
   });
 
-  // делаем большое изображение + убираем
+
   const bigImg = document.querySelector('.popup_type_foto');
   function openBigImg (e) {
     bigImg.classList.add ("popup_opened");
@@ -174,7 +172,6 @@ function openBigImg (e) {
   bigImg.style = "background-image: url(" + cardImage.src + " )";
   newCardTitle.textContent = cardTitle.textContent;
 
-
 }
 cardImg = document.querySelector("#myImage")
 cardImg.addEventListener("click", openBigImg);
@@ -202,20 +199,12 @@ function hearthChange () {
 }
 }
 
-
-
-
-// делаем большое изображение + убираем
-
 placesList.append(clonedCard);
 function openBigImg () {
 
   bigImg.classList.add ("popup_opened");
   bigImg.style = "background-image: url(" + clonedCard.querySelector(".card__image").src + " )";
   newCardTitle.textContent = clonedCard.querySelector(".card__ellipsis").textContent;
-
-
-  console.log("apple")
 
 }
 clonedCard.querySelector(".card__image").addEventListener("click", openBigImg);
@@ -243,7 +232,3 @@ const cardsPopulation = () => {
   
 };
 cardsPopulation();
-
-
-
-

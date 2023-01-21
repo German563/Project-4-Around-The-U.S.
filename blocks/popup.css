@@ -122,9 +122,7 @@ background-image: url(../images/lago-di-braies.jpg);
 background-repeat: no-repeat;
 background-size: cover;
 background-position: center;
-background-repeat: no-repeat;
-/* max-height: 75vh;
-max-width: 75vw; */
+background-color: transparent;
 height: 100%;
 width: 100%;
 
