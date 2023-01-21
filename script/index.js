@@ -43,7 +43,7 @@ const galleryLink = document.querySelector(".popup__input_type_card-link");
 const galleryNewCardName =  document.querySelector(".popup__input_type_card-name");
 const createButton = document.querySelector(".create__button");
 const newCardTitle = document.querySelector(".popup__title-foto");
-const placesList = document.querySelector(".places__list");
+const placesList = document.querySelector(".card__area");
 
 
 function fillProfileForm() {
