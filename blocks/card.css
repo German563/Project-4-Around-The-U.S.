@@ -37,7 +37,7 @@
 }
 
     .card__delete-button {
-        background-image: url(/images/trash-can.svg);
+        background-image: url(../images/trash-can.svg);
         border: none;
         background-color: transparent;
         position: absolute;
