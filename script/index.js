@@ -41,7 +41,7 @@ const galleryName = document.querySelector('.gallery__header');
 const galleryTitle = document.querySelector('.gallery__subtext');
 const galleryLink = document.querySelector(".popup__input_type_card-link");
 const galleryNewCardName =  document.querySelector(".popup__input_type_card-name");
-const createButton = document.querySelector(".form__button");
+const createButton = document.querySelector(".button_active");
 const newCardTitle = document.querySelector(".popup__title-foto");
 const placesList = document.querySelector(".card__area");
 
@@ -150,7 +150,7 @@ const creareNewCard = (props) => {
   return clonedCard;
 };
 
-submitButton = document.querySelector(".form__button");
+submitButton = document.querySelector(".button_active");
 
 // create new card
 
