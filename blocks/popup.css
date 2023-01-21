@@ -30,7 +30,9 @@
 }
 
 .popup {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
     position: absolute;
     max-width: calc(430px - 72px);
     max-height: calc(330px - 36px);
@@ -41,7 +43,9 @@
     border-radius: 10px;
 }
 .popupImg {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
     position: absolute;
     max-width: calc(430px - 72px);
     max-height: calc(330px - 36px);
@@ -53,11 +57,13 @@
 }
 
 .popup_opened {
-    display: block;
+    visibility: visible;
+    opacity: 1;
     padding: 0 36px 36px 36px;
 }
 .popupImg_opened {
-    display: block;
+    visibility: visible;
+    opacity: 1;
     padding: 0 36px 36px 36px;
 }
 
