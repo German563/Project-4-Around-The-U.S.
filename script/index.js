@@ -40,12 +40,11 @@ const formData = document.querySelector(".popup__form");
 const galleryName = document.querySelector('.gallery__header');
 const galleryTitle = document.querySelector('.gallery__subtext');
 const galleryLink = document.querySelector(".popup__input_type_card-link");
-const galleryNewCardName = document.querySelector(".popup__input_type_card-name");
 const createButton = document.querySelector(".button_active");
-const newcardLinkTitle = document.querySelector(".popup__title-foto");
+const newCardLinkTitle = document.querySelector(".popup__title-foto");
 const placesList = document.querySelector(".card__area");
-const formEdit = document.getElementById('form__edit')
-const formPlace = document.getElementById('form__place')
+const formEdit = document.getElementById('form__edit');
+const formPlace = document.getElementById('form__place');
 
 
 
@@ -60,20 +59,26 @@ function openModal(modal) {
 function closeModal(modal) {
   modal.classList.remove("popup_opened");
 }
-saveProfileModal.addEventListener("click", closeModal)
+saveProfileModal.addEventListener("click", function () {
+  galleryName.textContent = nameInput.value;
+  galleryTitle.textContent = titleInput.value;
+  closeEdit();
+  resetPlaceForm();
+
+
+});
 function openEditProfileModal() {
   fillProfileForm();
   openModal();
 }
 function openAddNewCard() {
-  openNewWindow();
+  openCardModal();
 }
 function openEdit() {
   openModal(profileModal)
 }
 function closeEdit() {
   closeModal(profileModal)
-  resetPlaceForm()
 }
 // reset form functions
 function resetEditForm() {
@@ -92,21 +97,13 @@ profileModal.addEventListener("submit", function () {
   galleryTitle.textContent = titleInput.value;
 
 });
-
-galleryNewCardName.addEventListener("submit", function () {
-  galleryName.textContent = nameInput.value;
-  galleryTitle.textContent = titleInput.value;
-  resetPlaceForm();
-
-
-});
 // add card 
 
 const galleryButton = document.querySelector(".gallery__button");
 const closeButtonNewPlace = document.querySelector("#closeButtonNewPlace");
 
 
-function openNewWindow() {
+function openCardModal() {
   openModal(popupAddCard)
 }
 function closeNewWindow() {
@@ -123,12 +120,7 @@ const cardTemplate = document.querySelector("#card-template").content.querySelec
 const cardElement = cardTemplate.cloneNode(true);
 const listContainer = document.querySelector(".card__area");
 
-const createListWrapper = (props) => {
-  const className = props.className;
-  const newElement = document.createElement("ul");
-  newElement.classList.toggle(className);
-  return newElement;
-}
+
 const createNewCard = (props) => {
   const localName = props.name;
   const localLink = props.link;
@@ -140,13 +132,14 @@ const createNewCard = (props) => {
 
   cardLinkTitle.textContent = localName;
   cardLinkInput.src = localLink;
+  cardLinkInput.alt = "picture";
 
   function changeHeart() {
-
-    if (clonedCard.querySelector("#heart").getAttribute("src") === "./images/heart.svg") {
-      clonedCard.querySelector("#heart").setAttribute("src", "./images/black-hearth.svg");
+    const chosenHeart = clonedCard.querySelector("#heart")
+    if (chosenHeart.getAttribute("src") === "./images/heart.svg") {
+      chosenHeart.setAttribute("src", "./images/black-hearth.svg");
     } else {
-      clonedCard.querySelector("#heart").setAttribute("src", "./images/heart.svg");
+      chosenHeart.setAttribute("src", "./images/heart.svg");
     }
   }
 
@@ -162,7 +155,7 @@ const createNewCard = (props) => {
   function openBigImg(e) {
     openModal(bigImg);
     bigImg.style = "background-image: url(" + cardLinkInput.src + " )";
-    newcardLinkTitle.textContent = clonedCard.querySelector(".card__ellipsis").textContent;
+    newCardLinkTitle.textContent = clonedCard.querySelector(".card__ellipsis").textContent;
   }
   cardLinkInput.addEventListener("click", openBigImg);
   const deletBigImg = document.querySelector("#closeButtonFoto");
@@ -188,7 +181,6 @@ submitButton.addEventListener("click", (e) => {
   resetEditForm();
 });
 
-
 const populateCards = () => {
   initialCards.forEach((item) => {
     const cardPropsObj = {
@@ -200,3 +192,4 @@ const populateCards = () => {
   });
 };
 populateCards();
+
