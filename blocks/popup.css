@@ -13,6 +13,7 @@
 .popupImg__close:hover {
     opacity: 0.6;
 }
+
 .popupImg__close {
     background: transparent url(../images/Close_Icon.svg) center no-repeat;
     width: 40px;
@@ -43,6 +44,7 @@
     border-radius: 10px;
     padding: 0 36px 36px 36px;
 }
+
 .popupImg {
     visibility: hidden;
     opacity: 0;
@@ -62,11 +64,12 @@
     opacity: 1;
     transition: 0.5s;
 }
+
 .popupImg_opened {
     visibility: visible;
     opacity: 1;
     transition: 0.5s;
-    
+
 }
 
 .popup__form {
@@ -120,25 +123,26 @@
 }
 
 .popup_type_foto {
-background-image: url(../images/lago-di-braies.jpg);
-background-repeat: no-repeat;
-background-size: cover;
-background-position: center;
-background-color: transparent;
-height: 100%;
-width: 100%;
+    background-image: url(../images/lago-di-braies.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
 
 }
+
 .popup__title-foto {
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 15px;
-color: #FFFFFF;
-position: absolute;
-bottom: -40px;
-left: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FFFFFF;
+    position: absolute;
+    bottom: -40px;
+    left: 0;
 }
 
 

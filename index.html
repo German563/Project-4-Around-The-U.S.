@@ -37,65 +37,64 @@
 
             </section>
             <section class="card">
- <ul class="card__area"></ul>
-                    <template id="card-template">
-                        <li class="card__gallery">
-                            <div class="card__wrapper">
-                                <button type="button" id="deleteButton" class="card__delete-button"></button>
-                                <img id="myImage" class="card__image" src="none">
-                            </div>
-                            <div class="card__text">
-                                <h2 class="card__ellipsis">
-                
-                                </h2> <button class="card__button" type="button" >
-                                    <img src="./images/heart.svg" class="hearthButton" id="heart"
-                                        alt="heart"></button>
-                            </div>
-                        </li>
-                    </template>
-      
-            </section>
-            
-                <div class="popup popup_type_edit-profile">
-                    <button class="popup__close"> </button>
-                    <div class="popup__content">
-                        <h3 class="popup__title">Edit profile</h3>
-                        <form name="profile" id="form__edit" class="popup__form"  action="" onsubmit="return false">
-                            <input type="text"  name="name" required class="popup__input popup__input_type_name"
-                                placeholder="Name">
-                            <input type="text"  name="title" required class="popup__input popup__input_type_description"
-                                placeholder="About">
-                            <button type="submit" class="button popup__button" >Save</button>
-                        </form>
-                    </div>
-                </div>
+                <ul class="card__area"></ul>
+                <template id="card-template">
+                    <li class="card__gallery">
+                        <div class="card__wrapper">
+                            <button type="button" id="deleteButton" class="card__delete-button"></button>
+                            <img id="myImage" class="card__image" src="none">
+                        </div>
+                        <div class="card__text">
+                            <h2 class="card__ellipsis">
 
-<div class="popup popup_type_add-card">
-    <button class="popup__close" id="closeButtonNewPlace"> </button>
-    <div class="popup__content">
-        <h3 class="popup__title">New place</h3>
-        <form name="card" id="form__place" class="popup__form" action="" onsubmit="return false">
-            <input type="text" id="nameImg" name="nameNew" class="popup__input popup__input_type_card-name"
-                placeholder="Title">
-            <input type="url" id="titleURL" name="titleURL" class="popup__input popup__input_type_card-link"
-                placeholder="Image link">
-            <button type="submit" class="button button_active popup__button" ">Create</button>
+                            </h2> <button class="card__button" type="button">
+                                <img src="./images/heart.svg" class="hearthButton" id="heart" alt="heart"></button>
+                        </div>
+                    </li>
+                </template>
+
+            </section>
+
+            <div class="popup popup_type_edit-profile">
+                <button class="popup__close"> </button>
+                <div class="popup__content">
+                    <h3 class="popup__title">Edit profile</h3>
+                    <form name="profile" id="form__edit" class="popup__form" action="" onsubmit="return false">
+                        <input type="text" name="name" required class="popup__input popup__input_type_name"
+                            placeholder="Name">
+                        <input type="text" name="title" required class="popup__input popup__input_type_description"
+                            placeholder="About">
+                        <button type="submit" class="button popup__button">Save</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="popup popup_type_add-card">
+                <button class="popup__close" id="closeButtonNewPlace"> </button>
+                <div class="popup__content">
+                    <h3 class="popup__title">New place</h3>
+                    <form name="card" id="form__place" class="popup__form" action="" onsubmit="return false">
+                        <input type="text" id="nameImg" name="nameNew" class="popup__input popup__input_type_card-name"
+                            placeholder="Title">
+                        <input type="url" id="titleURL" name="titleURL" class="popup__input popup__input_type_card-link"
+                            placeholder="Image link">
+                        <button type="submit" class="button button_active popup__button" ">Create</button>
         </form>
     </div>
 </div>
-<div class="popup popup_type_foto">
-    
-    <button class="popup__close" id="closeButtonFoto"> </button>
-    <div class="popup__content">
-        
-        <h3 class="popup__title-foto">Lago di Braies
-        </h3>
-        
-    </div>
-</div>
+<div class=" popup popup_type_foto">
+
+                            <button class="popup__close" id="closeButtonFoto"> </button>
+                            <div class="popup__content">
+
+                                <h3 class="popup__title-foto">Lago di Braies
+                                </h3>
+
+                            </div>
+                </div>
 
 
-  
+
         </main>
         <footer class="footer">
             <p class="footer__copyright">© 2022 Around The U.S.</p>

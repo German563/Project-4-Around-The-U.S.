@@ -55,7 +55,7 @@ function fillProfileForm() {
 }
 function openModal(modal) {
   modal.classList.add("popup_opened");
-  
+
 }
 function closeModal(modal) {
   modal.classList.remove("popup_opened");
@@ -98,7 +98,7 @@ galleryNewCardName.addEventListener("submit", function () {
   galleryTitle.textContent = titleInput.value;
   resetPlaceForm();
 
- 
+
 });
 // add card 
 
@@ -199,4 +199,4 @@ const populateCards = () => {
     placesList.append(createNewCard(cardPropsObj));
   });
 };
-populateCards ();
+populateCards();
