@@ -29,14 +29,14 @@ const profileModal = document.querySelector(".popup_type_edit-profile");
 const popupAddCard = document.querySelector(".popup_type_add-card");
 const openEditButton = document.querySelector(".gallery__pencil");
 const closeWindowButton = document.querySelector(".popup__close");
-const saveProfileModal = document.querySelector(".popup__button");
+const saveProfileModal = profileModal.querySelector(".popup__button");
 // inputs for person
 const nameInput = document.forms.profile.elements.name;
 const titleInput = document.forms.profile.elements.title;
 // inputs for new card 
 const cardLinkTitle = document.querySelector("#nameImg");
 const cardLinkInput = document.querySelector("#titleURL");
-const formData = document.querySelector(".popup__form");
+const formData = profileModal.querySelector(".popup__form");
 const galleryName = document.querySelector('.gallery__header');
 const galleryTitle = document.querySelector('.gallery__subtext');
 const galleryLink = document.querySelector(".popup__input_type_card-link");
