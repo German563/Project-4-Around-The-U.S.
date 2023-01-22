@@ -32,7 +32,7 @@
 .popup {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s, opacity 0.5s linear;
+    transition: visibility 0s 0.5s, opacity 0.5s linear;
     position: absolute;
     max-width: calc(430px - 72px);
     max-height: calc(330px - 36px);
@@ -41,6 +41,7 @@
     background: #FFFFFF;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
+    padding: 0 36px 36px 36px;
 }
 .popupImg {
     visibility: hidden;
@@ -59,12 +60,13 @@
 .popup_opened {
     visibility: visible;
     opacity: 1;
-    padding: 0 36px 36px 36px;
+    transition: 0.5s;
 }
 .popupImg_opened {
     visibility: visible;
     opacity: 1;
-    padding: 0 36px 36px 36px;
+    transition: 0.5s;
+    
 }
 
 .popup__form {
