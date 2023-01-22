@@ -178,55 +178,15 @@ submitButton = document.querySelector(".button_active");
 // create new card
 
 submitButton.addEventListener("click", (e) => {
-
   const cardTemplate = document.querySelector("#card-template").content.querySelector(".card__gallery");
-
-  const clonedCard = cardTemplate.cloneNode(true);
-  const cardImage = clonedCard.querySelector(".card__image");
-  const cardLinkTitle = clonedCard.querySelector(".card__ellipsis");
-  cardImage.src = document.getElementById("titleURL").value
-  cardLinkTitle.textContent = document.getElementById("nameImg").value
-  // like button for new card elements
-  const bigImg = document.querySelector('.popup_type_foto');
-  function openBigImg(e) {
-    openModal(bigImg);
-    bigImg.style = "background-image: url(" + cardImage.src + " )";
-    newcardLinkTitle.textContent = cardLinkTitle.textContent;
-
-  }
-  cardImg = document.querySelector("#myImage")
-  cardImg.addEventListener("click", openBigImg);
-  const deletBigImg = document.querySelector("#closeButtonFoto");
-
-  clonedCard.querySelector(".card__delete-button").addEventListener("click", (e) => {
-    e.target.closest(".card__gallery").remove();
+  const clonedCard = createNewCard({
+    name: document.getElementById("nameImg").value,
+    link: document.getElementById("titleURL").value,
+    cardTemplate: cardTemplate
   });
-
-
-
-
-
-  function changeHeart() {
-    if (clonedCard.querySelector("#heart").getAttribute("src") === "./images/heart.svg") {
-      clonedCard.querySelector("#heart").setAttribute("src", "./images/black-hearth.svg");
-    } else {
-      clonedCard.querySelector("#heart").setAttribute("src", "./images/heart.svg");
-    }
-  }
-  clonedCard.querySelector("#heart").addEventListener("click", changeHeart);
-
   placesList.append(clonedCard);
-  function openBigImg() {
-    openModal(bigImg);
-    bigImg.style = "background-image: url(" + clonedCard.querySelector(".card__image").src + " )";
-    newcardLinkTitle.textContent = clonedCard.querySelector(".card__ellipsis").textContent;
-  }
-  clonedCard.querySelector(".card__image").addEventListener("click", openBigImg);
-  deletBigImg.addEventListener("click", closeModal);
-  resetEditForm()
-
+  resetEditForm();
 });
-
 
 
 const populateCards = () => {
