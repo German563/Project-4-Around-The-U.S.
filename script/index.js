@@ -61,12 +61,12 @@ function closeModal(modal) {
   modal.classList.remove("popup_opened");
 }
 
-function openEdit() {
-  openModal(profileModal)
-}
+function openEdit() { 
+  fillProfileForm();
+  openModal(profileModal);
+} 
 function closeEdit() {
   closeModal(profileModal)
-  resetEditForm()
 }
 // reset form functions
 function resetPlaceForm() {
