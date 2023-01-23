@@ -46,9 +46,9 @@ const placesList = document.querySelector(".card__area");
 const formEdit = document.getElementById('form__edit');
 const formPlace = document.getElementById('form__place');
 // Close buttons
-const deletBigImg = document.querySelector("#closeButtonFoto");
+const deleteBigImg = document.querySelector("#closeButtonFoto");
 
-fillProfileForm()
+
 function fillProfileForm() {
   nameInput.value = galleryName.textContent;
   titleInput.value = galleryTitle.textContent;
@@ -60,23 +60,13 @@ function openModal(modal) {
 function closeModal(modal) {
   modal.classList.remove("popup_opened");
 }
-saveProfileModal.addEventListener("click", function () {
-  galleryName.textContent = nameInput.value;
-  galleryTitle.textContent = titleInput.value;
-  closeEdit();
-  resetPlaceForm();
 
-
-});
-function openEditProfileModal() {
-  fillProfileForm();
-  openModal();
-}
 function openEdit() {
   openModal(profileModal)
 }
 function closeEdit() {
   closeModal(profileModal)
+  resetEditForm()
 }
 // reset form functions
 function resetPlaceForm() {
@@ -94,6 +84,7 @@ profileModal.addEventListener("submit", function () {
   galleryName.textContent = nameInput.value;
   galleryTitle.textContent = titleInput.value;
   resetEditForm();
+  closeEdit();
 });
 // add card 
 
@@ -107,8 +98,8 @@ function openCardModal() {
 function closeCardModal() {
   closeModal(popupAddCard)
 }
-galleryButton.addEventListener("click", function () { openCardModal(popupAddCard) });
-closeButtonNewPlace.addEventListener("click", function () { closeCardModal(popupAddCard) });
+galleryButton.addEventListener("click",openCardModal)
+closeButtonNewPlace.addEventListener("click", closeCardModal);
 
 
 //new card creation//
@@ -149,8 +140,6 @@ const createNewCard = (props) => {
     e.target.closest(".card__gallery").remove();
   });
 
-
-  const bigImg = document.querySelector('.popup_type_foto');
   function openBigImg(e) {
     openModal(bigImg);
     bigImg.style = "background-image: url(" + cardLinkInput.src + " )";
@@ -158,14 +147,13 @@ const createNewCard = (props) => {
   }
   cardLinkInput.addEventListener("click", openBigImg);
 
-  function closeBigImg() {
-    closeModal(bigImg);
-  }
-  deletBigImg.addEventListener("click", closeBigImg);
   return clonedCard;
 };
-
-
+const bigImg = document.querySelector('.popup_type_foto');
+function closeBigImg() { 
+  closeModal(bigImg); 
+} 
+deleteBigImg.addEventListener("click", closeBigImg); 
 
 // create new card
 
@@ -176,7 +164,7 @@ formPlace.addEventListener("submit", (e) => {
     link: document.getElementById("titleURL").value,
     cardTemplate: cardTemplate
   });
-  placesList.append(clonedCard);
+  placesList.prepend(clonedCard);
   closeCardModal(popupAddCard);
   resetPlaceForm();
 });
@@ -192,6 +180,7 @@ const populateCards = () => {
     };
     placesList.append(createNewCard(cardPropsObj));
   });
+  fillProfileForm(profileModal)
 };
 populateCards();
 
