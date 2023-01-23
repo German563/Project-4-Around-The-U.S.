@@ -28,7 +28,7 @@ const initialCards = [
 const profileModal = document.querySelector(".popup_type_edit-profile");
 const popupAddCard = document.querySelector(".popup_type_add-card");
 const openEditButton = document.querySelector(".gallery__pencil");
-const closeWindowButton = document.querySelector(".popup__close");
+const closeProfileModalButton = profileModal.querySelector(".popup__close");
 const saveProfileModal = profileModal.querySelector(".popup__button");
 // inputs for person
 const nameInput = document.forms.profile.elements.name;
@@ -36,18 +36,19 @@ const titleInput = document.forms.profile.elements.title;
 // inputs for new card 
 const cardLinkTitle = document.querySelector("#nameImg");
 const cardLinkInput = document.querySelector("#titleURL");
-const formData = profileModal.querySelector(".popup__form");
 const galleryName = document.querySelector('.gallery__header');
 const galleryTitle = document.querySelector('.gallery__subtext');
 const galleryLink = document.querySelector(".popup__input_type_card-link");
 const createButton = document.querySelector(".button_active");
 const newCardLinkTitle = document.querySelector(".popup__title-foto");
 const placesList = document.querySelector(".card__area");
+// All forms
 const formEdit = document.getElementById('form__edit');
 const formPlace = document.getElementById('form__place');
+// Close buttons
+const deletBigImg = document.querySelector("#closeButtonFoto");
 
-
-
+fillProfileForm()
 function fillProfileForm() {
   nameInput.value = galleryName.textContent;
   titleInput.value = galleryTitle.textContent;
@@ -71,9 +72,6 @@ function openEditProfileModal() {
   fillProfileForm();
   openModal();
 }
-function openAddNewCard() {
-  openCardModal();
-}
 function openEdit() {
   openModal(profileModal)
 }
@@ -81,21 +79,21 @@ function closeEdit() {
   closeModal(profileModal)
 }
 // reset form functions
-function resetEditForm() {
+function resetPlaceForm() {
   formPlace.reset()
 }
-function resetPlaceForm() {
+function resetEditForm() {
   formEdit.reset()
 }
 
 openEditButton.addEventListener("click", openEdit);
-closeWindowButton.addEventListener("click", closeEdit);
+closeProfileModalButton.addEventListener("click", closeEdit);
 
 
 profileModal.addEventListener("submit", function () {
   galleryName.textContent = nameInput.value;
   galleryTitle.textContent = titleInput.value;
-
+  resetEditForm();
 });
 // add card 
 
@@ -106,12 +104,12 @@ const closeButtonNewPlace = document.querySelector("#closeButtonNewPlace");
 function openCardModal() {
   openModal(popupAddCard)
 }
-function closeNewWindow() {
+function closeCardModal() {
   closeModal(popupAddCard)
 }
-galleryButton.addEventListener("click", function () { openAddNewCard(popupAddCard) });
-closeButtonNewPlace.addEventListener("click", function () { closeNewWindow(popupAddCard) });
-createButton.addEventListener("click", function () { closeNewWindow(popupAddCard) });
+galleryButton.addEventListener("click", function () { openCardModal(popupAddCard) });
+closeButtonNewPlace.addEventListener("click", function () { closeCardModal(popupAddCard) });
+
 
 //new card creation//
 // new place modal
@@ -122,6 +120,7 @@ const listContainer = document.querySelector(".card__area");
 
 
 const createNewCard = (props) => {
+
   const localName = props.name;
   const localLink = props.link;
   const localCardTemplate = props.cardTemplate;
@@ -133,7 +132,7 @@ const createNewCard = (props) => {
   cardLinkTitle.textContent = localName;
   cardLinkInput.src = localLink;
   cardLinkInput.alt = "picture";
-
+  clonedCard.querySelector("#heart").addEventListener("click", changeHeart);
   function changeHeart() {
     const chosenHeart = clonedCard.querySelector("#heart")
     if (chosenHeart.getAttribute("src") === "./images/heart.svg") {
@@ -143,7 +142,7 @@ const createNewCard = (props) => {
     }
   }
 
-  clonedCard.querySelector("#heart").addEventListener("click", changeHeart);
+
 
 
   clonedCard.querySelector(".card__delete-button").addEventListener("click", (e) => {
@@ -158,7 +157,7 @@ const createNewCard = (props) => {
     newCardLinkTitle.textContent = clonedCard.querySelector(".card__ellipsis").textContent;
   }
   cardLinkInput.addEventListener("click", openBigImg);
-  const deletBigImg = document.querySelector("#closeButtonFoto");
+
   function closeBigImg() {
     closeModal(bigImg);
   }
@@ -166,11 +165,11 @@ const createNewCard = (props) => {
   return clonedCard;
 };
 
-submitButton = document.querySelector(".button_active");
+
 
 // create new card
 
-submitButton.addEventListener("click", (e) => {
+formPlace.addEventListener("submit", (e) => {
   const cardTemplate = document.querySelector("#card-template").content.querySelector(".card__gallery");
   const clonedCard = createNewCard({
     name: document.getElementById("nameImg").value,
@@ -178,8 +177,11 @@ submitButton.addEventListener("click", (e) => {
     cardTemplate: cardTemplate
   });
   placesList.append(clonedCard);
-  resetEditForm();
+  closeCardModal(popupAddCard);
+  resetPlaceForm();
 });
+
+
 
 const populateCards = () => {
   initialCards.forEach((item) => {
