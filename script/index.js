@@ -61,10 +61,10 @@ function closeModal(modal) {
   modal.classList.remove("popup_opened");
 }
 
-function openEdit() { 
+function openEdit() {
   fillProfileForm();
   openModal(profileModal);
-} 
+}
 function closeEdit() {
   closeModal(profileModal)
 }
@@ -98,7 +98,7 @@ function openCardModal() {
 function closeCardModal() {
   closeModal(popupAddCard)
 }
-galleryButton.addEventListener("click",openCardModal)
+galleryButton.addEventListener("click", openCardModal)
 closeButtonNewPlace.addEventListener("click", closeCardModal);
 
 
@@ -150,10 +150,10 @@ const createNewCard = (props) => {
   return clonedCard;
 };
 const bigImg = document.querySelector('.popup_type_foto');
-function closeBigImg() { 
-  closeModal(bigImg); 
-} 
-deleteBigImg.addEventListener("click", closeBigImg); 
+function closeBigImg() {
+  closeModal(bigImg);
+}
+deleteBigImg.addEventListener("click", closeBigImg);
 
 // create new card
 
@@ -183,4 +183,3 @@ const populateCards = () => {
   fillProfileForm(profileModal)
 };
 populateCards();
-

@@ -117,7 +117,9 @@
     margin-top: calc(48px - 29px);
     cursor: pointer;
 }
-
+.popup__button.button_inactive {
+    background-color: grey;
+}
 .popup__button:hover {
     opacity: 0.8;
 }

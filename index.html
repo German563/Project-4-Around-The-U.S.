@@ -59,10 +59,10 @@
                 <button class="popup__close"> </button>
                 <div class="popup__content">
                     <h3 class="popup__title">Edit profile</h3>
-                    <form name="profile" id="form__edit" class="popup__form" action="" onsubmit="return false">
-                        <input type="text" name="name" required class="popup__input popup__input_type_name"
+                    <form name="profile" id="form__edit" class="popup__form" >
+                        <input type="text" name="name" required minlength="2" maxlength="40" class="popup__input popup__input_type_name"
                             placeholder="Name">
-                        <input type="text" name="title" required class="popup__input popup__input_type_description"
+                        <input type="text" name="title" required minlength="2" maxlength="200"  class="popup__input popup__input_type_description"
                             placeholder="About">
                         <button type="submit" class="button popup__button">Save</button>
                     </form>
@@ -73,10 +73,10 @@
                 <button class="popup__close" id="closeButtonNewPlace"> </button>
                 <div class="popup__content">
                     <h3 class="popup__title">New place</h3>
-                    <form name="card" id="form__place" class="popup__form" action="" onsubmit="return false">
-                        <input type="text" id="nameImg" name="nameNew" class="popup__input popup__input_type_card-name"
+                    <form name="card" id="form__place" class="popup__form" >
+                        <input type="text" id="nameImg" required name="nameNew" minlength="1" maxlength="30" class="popup__input popup__input_type_card-name"
                             placeholder="Title">
-                        <input type="url" id="titleURL" name="titleURL" class="popup__input popup__input_type_card-link"
+                        <input type="url" id="titleURL" required name="titleURL" class="popup__input popup__input_type_card-link"
                             placeholder="Image link">
                         <button type="submit" class="button button_active popup__button" action=""
                             onsubmit="return false">Create</button>
@@ -101,6 +101,7 @@
             <p class="footer__copyright">© 2022 Around The U.S.</p>
         </footer>
     </div>
+    <script src="./script/validate.js" defer></script>
     <script src="./script/index.js" defer></script>
 
 
