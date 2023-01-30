@@ -118,7 +118,10 @@
 }
 
 .popup__button.button__inactive {
-    background-color: grey;
+    background-color: white;
+    color: black;
+    border: 1px solid #000000;
+    opacity: 0.2;
 }
 .popup__button:hover {
     opacity: 0.8;
