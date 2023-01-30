@@ -60,6 +60,20 @@ function openModal(modal) {
 function closeModal(modal) {
   modal.classList.remove("popup_opened");
 }
+window.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    closeCardModal();
+    closeEdit();
+    closeBigImg()
+  }
+});
+window.addEventListener("click", function (event) {
+  if (event.key === "Escape") {
+    closeCardModal();
+    closeEdit();
+    closeBigImg()
+  }
+});
 
 function openEdit() {
   fillProfileForm();
@@ -68,6 +82,8 @@ function openEdit() {
 function closeEdit() {
   closeModal(profileModal)
 }
+
+
 // reset form functions
 function resetPlaceForm() {
   formPlace.reset()
@@ -183,3 +199,4 @@ const populateCards = () => {
   fillProfileForm(profileModal);
 };
 populateCards();
+
