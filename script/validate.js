@@ -3,7 +3,6 @@ const hideError = (input) => {
 };
 const showError = (input) => {
     console.log("Not valid", input);
-    input.classList.add(inactiveButtonClass);
 };
 
 const checkValidity = (input) => {
@@ -47,12 +46,11 @@ errorClass,
               } else {
                 showError();
                 toggleButton({
-                    submitButton,
-                    inactiveButtonClass,
+                    submitButton: submitButton,
+                    inactiveButtonClass: inactiveButtonClass,
                     isDisabled: true,
                 });
                 }
-             
         });
     });
     });
@@ -61,7 +59,7 @@ else  {
     console.log("No form selector specified");
 }
 };
-
+  
 enableValidation({
 formSelector: ".popup__form",
 inputSelector: ".popup__input",

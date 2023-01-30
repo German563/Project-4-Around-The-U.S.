@@ -180,6 +180,6 @@ const populateCards = () => {
     };
     placesList.append(createNewCard(cardPropsObj));
   });
-  fillProfileForm(profileModal)
+  fillProfileForm(profileModal);
 };
 populateCards();
