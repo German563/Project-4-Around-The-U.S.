@@ -62,8 +62,10 @@
                     <form name="profile" id="form__edit" class="popup__form" >
                         <input type="text" name="name" required minlength="2" maxlength="40" class="popup__input popup__input_type_name"
                             placeholder="Name">
+                            <label for="name" class="popup__label">Please fill out this field.</label>
                         <input type="text" name="title" required minlength="2" maxlength="200"  class="popup__input popup__input_type_description"
                             placeholder="About">
+                            <label for="title" class="popup__label">Please fill out this field.</label>
                         <button type="submit" class="button popup__button ">Save</button>
                     </form>
                 </div>
@@ -76,8 +78,10 @@
                     <form name="card" id="form__place" class="popup__form" >
                         <input type="text" id="nameImg" required name="nameNew" minlength="1" maxlength="30" class="popup__input popup__input_type_card-name"
                             placeholder="Title">
+                            <label for="nameNew" class="popup__label">Please fill out this field.</label>
                         <input type="url" id="titleURL" required name="titleURL" class="popup__input popup__input_type_card-link"
                             placeholder="Image link">
+                            <label for="titleURL" class="popup__label">Please enter a web address.</label>
                         <button type="submit" class="button  popup__button" action=""
                             onsubmit="return false">Create</button>
                     </form>

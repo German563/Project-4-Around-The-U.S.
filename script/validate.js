@@ -1,15 +1,19 @@
-const hideError = (input) => {
-    console.log("input is valid", input);
+const hideError = (props) => {
+    const {inputErrorClass, input, labels, errorClass} = props
+    input.classList.remove(inputErrorClass);
+    // labels.classList.remove(errorClass);
 };
-const showError = (input) => {
-    console.log("Not valid", input);
+const showError = (props) => {
+    const {inputErrorClass, input, labels, errorClass} = props
+    input.classList.add(inputErrorClass);
+    // labels.classList.add(errorClass);
 };
 
 const checkValidity = (input) => {
 return input.validity.valid;
 };
 const toggleButton = (props) => {
-    const {submitButton, inactiveButtonClass, isDisabled} = props;
+    const {submitButton, inactiveButtonClass, isDisabled} = props
     submitButton.disabled = isDisabled;
     if(isDisabled) {
         submitButton.classList.add(inactiveButtonClass);
@@ -17,6 +21,16 @@ const toggleButton = (props) => {
         submitButton.classList.remove(inactiveButtonClass);
     }
 };
+const toggleLabel = (props) => {
+    const {submitButton, errorClass, isDisabled, label} = props
+    submitButton.disabled = isDisabled;
+    if(isDisabled) {
+        label.classList.add(errorClass);
+    } else {
+        label.classList.remove(errorClass);
+    }
+};
+
 const enableValidation = (settings) => {
  const {
 formSelector,
@@ -24,7 +38,7 @@ inputSelector,
 submitButtonSelector,
 inactiveButtonClass,
 inputErrorClass,
-errorClass,
+
     } = settings || {};
       if (formSelector) {
     const forms = [...document.querySelectorAll(formSelector)];
@@ -37,22 +51,26 @@ errorClass,
             input.addEventListener("input", () => {
              const isValid = checkValidity(input);
              if (isValid) {
-                hideError();
+                hideError({input, inputErrorClass});
                 toggleButton({
                     submitButton: submitButton,
                     inactiveButtonClass: inactiveButtonClass,
                     isDisabled: false,
                 });
+                toggleLabel ();
               } else {
-                showError();
+                showError({input, inputErrorClass});
                 toggleButton({
                     submitButton: submitButton,
                     inactiveButtonClass: inactiveButtonClass,
                     isDisabled: true,
                 });
+                toggleLabel ();
                 }
         });
+        
     });
+
     });
 }
 else  {
@@ -67,4 +85,5 @@ submitButtonSelector: ".popup__button",
 inactiveButtonClass: "button__inactive",
 inputErrorClass: "popup__input_type_error",
 errorClass: "popup__input-error_active",
+label: ".popup__label",
 });
