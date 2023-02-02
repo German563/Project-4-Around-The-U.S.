@@ -56,6 +56,7 @@ function fillProfileForm() {
 function openModal(modal) {
   modal.classList.add("popup_opened");
 
+
 }
 function closeModal(modal) {
   modal.classList.remove("popup_opened");
@@ -77,6 +78,7 @@ window.addEventListener("click", function (event) {
 
 function openEdit() {
   fillProfileForm();
+  checkInitialFormValidity(profileModal.querySelector("form"), pageSettings);
   openModal(profileModal);
 }
 function closeEdit() {
@@ -109,6 +111,7 @@ const closeButtonNewPlace = document.querySelector("#closeButtonNewPlace");
 
 
 function openCardModal() {
+  checkInitialFormValidity(popupAddCard.querySelector("form"), pageSettings);
   openModal(popupAddCard)
 }
 function closeCardModal() {

@@ -60,12 +60,12 @@
                 <div class="popup__content">
                     <h3 class="popup__title">Edit profile</h3>
                     <form name="profile" id="form__edit" class="popup__form" >
-                        <input type="text" name="name" required minlength="2" maxlength="40" class="popup__input popup__input_type_name"
+                        <input id="input_type_name" type="text" name="name" required minlength="2" maxlength="40" class="popup__input popup__input_type_name"
                             placeholder="Name">
-                            <label for="name" class="popup__label">Please fill out this field.</label>
-                        <input type="text" name="title" required minlength="2" maxlength="200"  class="popup__input popup__input_type_description"
+                            <label id="input_type_name-error" for="name" class="popup__label"></label>
+                        <input id="input_type_description" type="text" name="title" required minlength="2" maxlength="200"  class="popup__input popup__input_type_description"
                             placeholder="About">
-                            <label for="title" class="popup__label">Please fill out this field.</label>
+                            <label id="input_type_description-error" for="title" class="popup__label"></label>
                         <button type="submit" class="button popup__button ">Save</button>
                     </form>
                 </div>
@@ -76,14 +76,14 @@
                 <div class="popup__content">
                     <h3 class="popup__title">New place</h3>
                     <form name="card" id="form__place" class="popup__form" >
-                        <input type="text" id="nameImg" required name="nameNew" minlength="1" maxlength="30" class="popup__input popup__input_type_card-name"
+                        <input type="text" id="type_card-name" required name="nameNew" minlength="1" maxlength="30" class="popup__input popup__input_type_card-name"
                             placeholder="Title">
-                            <label for="nameNew" class="popup__label">Please fill out this field.</label>
-                        <input type="url" id="titleURL" required name="titleURL" class="popup__input popup__input_type_card-link"
+                            <label id="type_card-name-error" for="nameNew" class="popup__label"></label>
+                        <input type="url" id="type_card-url" required name="titleURL" class="popup__input popup__input_type_card-link"
                             placeholder="Image link">
-                            <label for="titleURL" class="popup__label">Please enter a web address.</label>
+                            <label id="type_card-url-error" for="titleURL" class="popup__label"></label>
                         <button type="submit" class="button  popup__button" action=""
-                            onsubmit="return false">Create</button>
+                            >Create</button>
                     </form>
                 </div>
             </div>
