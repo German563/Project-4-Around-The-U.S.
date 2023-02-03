@@ -71,7 +71,7 @@
   padding: 12px;
 }
 .card__background {
-  background-image: url(../images/heart.svg);
+  background-image: url(./images/heart.svg);
 }
 .card__button:hover {
   opacity: 0.5;
