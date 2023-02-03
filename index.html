@@ -12,7 +12,9 @@
 </head>
 
 <body>
+    <div class="popup__background"></div>
     <div class="page">
+
         <header class="header">
             <img class="header__logo" src="./images/header__logo.svg" alt="header__logo">
         </header>
@@ -47,8 +49,7 @@
                         <div class="card__text">
                             <h2 class="card__ellipsis">
 
-                            </h2> <button class="card__button" type="button">
-                                <img src="./images/heart.svg" class="hearthButton" id="heart" alt="heart"></button>
+                            </h2> <button id="heart" class="card__button card__background" style="background-image: url(../images/heart.svg)" type="button">
                         </div>
                     </li>
                 </template>
@@ -59,13 +60,13 @@
                 <button class="popup__close"> </button>
                 <div class="popup__content">
                     <h3 class="popup__title">Edit profile</h3>
-                    <form name="profile" id="form__edit" class="popup__form" >
-                        <input id="input_type_name" type="text" name="name" required minlength="2" maxlength="40" class="popup__input popup__input_type_name"
-                            placeholder="Name">
-                            <label id="input_type_name-error" for="name" class="popup__label"></label>
-                        <input id="input_type_description" type="text" name="title" required minlength="2" maxlength="200"  class="popup__input popup__input_type_description"
-                            placeholder="About">
-                            <label id="input_type_description-error" for="title" class="popup__label"></label>
+                    <form name="profile" id="form__edit" class="popup__form">
+                        <input id="input_type_name" type="text" name="name" required minlength="2" maxlength="40"
+                            class="popup__input popup__input_type_name" placeholder="Name">
+                        <label id="input_type_name-error" for="name" class="popup__label"></label>
+                        <input id="input_type_description" type="text" name="title" required minlength="2"
+                            maxlength="200" class="popup__input popup__input_type_description" placeholder="About">
+                        <label id="input_type_description-error" for="title" class="popup__label"></label>
                         <button type="submit" class="button popup__button ">Save</button>
                     </form>
                 </div>
@@ -75,15 +76,14 @@
                 <button class="popup__close" id="closeButtonNewPlace"> </button>
                 <div class="popup__content">
                     <h3 class="popup__title">New place</h3>
-                    <form name="card" id="form__place" class="popup__form" >
-                        <input type="text" id="type_card-name" required name="nameNew" minlength="1" maxlength="30" class="popup__input popup__input_type_card-name"
-                            placeholder="Title">
-                            <label id="type_card-name-error" for="nameNew" class="popup__label"></label>
-                        <input type="url" id="type_card-url" required name="titleURL" class="popup__input popup__input_type_card-link"
-                            placeholder="Image link">
-                            <label id="type_card-url-error" for="titleURL" class="popup__label"></label>
-                        <button type="submit" class="button  popup__button" action=""
-                            >Create</button>
+                    <form name="card" id="form__place" class="popup__form">
+                        <input type="text" id="type_card-name" required name="nameNew" minlength="1" maxlength="30"
+                            class="popup__input popup__input_type_card-name" placeholder="Title">
+                        <label id="type_card-name-error" for="nameNew" class="popup__label"></label>
+                        <input type="url" id="type_card-url" required name="titleURL"
+                            class="popup__input popup__input_type_card-link" placeholder="Image link">
+                        <label id="type_card-url-error" for="titleURL" class="popup__label"></label>
+                        <button type="submit" class="button  popup__button" action="">Create</button>
                     </form>
                 </div>
             </div>
