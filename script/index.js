@@ -47,7 +47,7 @@ const formEdit = document.getElementById("form__edit");
 const formPlace = document.getElementById("form__place");
 // Close buttons
 const deleteBigImg = document.querySelector("#closeButtonFoto");
-const closeOverlay = document.querySelector(".popup__background");
+const closeOverlay = document.querySelector(".page__background");
 
 function fillProfileForm() {
   nameInput.value = galleryName.textContent;
@@ -60,10 +60,10 @@ function openModal(modal) {
   window.addEventListener("mousedown", closeModalByEscape);
 }
 function openCloseOverlay() {
-  closeOverlay.classList.add("popup__background_opened");
+  closeOverlay.classList.add("page__background_opened");
 }
 function closeCloseOverlay() {
-  closeOverlay.classList.remove("popup__background_opened");
+  closeOverlay.classList.remove("page__background_opened");
 }
 function closeModal(modal) {
   modal.classList.remove("popup_opened");
