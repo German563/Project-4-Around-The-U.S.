@@ -155,16 +155,16 @@ const createNewCard = (props) => {
     const chosenHeart = clonedCard.querySelector("#heart");
     if (
       chosenHeart.getAttribute("style") ===
-      "background-image: url(../images/heart.svg)"
+      "background-image: url(./images/heart.svg)"
     ) {
       chosenHeart.setAttribute(
         "style",
-        "background-image: url(../images/black-hearth.svg)"
+        "background-image: url(./images/black-hearth.svg)"
       );
     } else {
       chosenHeart.setAttribute(
         "style",
-        "background-image: url(../images/heart.svg)"
+        "background-image: url(./images/heart.svg)"
       );
     }
   }
