@@ -57,7 +57,12 @@ function openModal(modal) {
   openCloseOverlay();
   modal.classList.add("popup_opened");
   document.addEventListener("keydown", closeModalByEscape);
-  document.addEventListener("mousedown", closeModalByEscape);
+  modal.addEventListener("mousedown", closeModalOnRemoteClick);
+}
+function closeModalOnRemoteClick(evt) {
+  if (evt.target === evt.currentTarget) {
+    closeModal(evt.target);
+  }
 }
 function openCloseOverlay() {
   closeOverlay.classList.add("page__background_opened");
@@ -69,7 +74,7 @@ function closeModal(modal) {
   modal.classList.remove("popup_opened");
   closeCloseOverlay();
   document.removeEventListener("keydown", closeModalByEscape);
-  document.removeEventListener("mousedown", closeModalByEscape);
+  document.removeEventListener("mousedown", closeModalOnRemoteClick);
 }
 function closeAllModals(event) {
   const openedModal = document.querySelector(".popup_opened")
