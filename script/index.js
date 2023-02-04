@@ -57,8 +57,7 @@ function openModal(modal) {
   openCloseOverlay();
   modal.classList.add("popup_opened");
   document.addEventListener("keydown", closeModalByEscape);
-  modal.addEventListener("mousedown", closeModalOnRemoteClick);
-  closeOverlay.addEventListener("mousedown", closeModalOnRemoteClick); 
+  closeOverlay.addEventListener("mousedown", closeModalOnRemoteClick);
 }
 function closeModalOnRemoteClick(evt) {
   if (evt.target === evt.currentTarget) {
@@ -75,12 +74,11 @@ function closeModal(modal) {
   modal.classList.remove("popup_opened");
   closeCloseOverlay();
   document.removeEventListener("keydown", closeModalByEscape);
-  modal.removeEventListener("mousedown", closeModalOnRemoteClick);
-  closeOverlay.removeEventListener("mousedown", closeModalOnRemoteClick); 
+  closeOverlay.removeEventListener("mousedown", closeModalOnRemoteClick);
 }
 function closeOpenedModal(event) {
-  const openedModal = document.querySelector(".popup_opened")
-  closeModal(openedModal);  
+  const openedModal = document.querySelector(".popup_opened");
+  closeModal(openedModal);
 }
 
 function closeModalByEscape(event) {
@@ -88,7 +86,6 @@ function closeModalByEscape(event) {
     closeOpenedModal();
   }
 }
-
 
 function openEdit() {
   fillProfileForm();
@@ -154,9 +151,8 @@ const createNewCard = (props) => {
   clonedCard.querySelector("#heart").addEventListener("click", changeHeart);
   function changeHeart() {
     const chosenHeart = clonedCard.querySelector("#heart");
-      chosenHeart.classList.toggle("card__background_active")
-    } 
-  
+    chosenHeart.classList.toggle("card__background_active");
+  }
 
   clonedCard
     .querySelector(".card__delete-button")
@@ -205,6 +201,3 @@ const populateCards = () => {
   fillProfileForm(profileModal);
 };
 populateCards();
-
-
-
