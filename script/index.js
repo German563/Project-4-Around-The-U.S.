@@ -56,8 +56,8 @@ function fillProfileForm() {
 function openModal(modal) {
   openCloseOverlay();
   modal.classList.add("popup_opened");
-  window.addEventListener("keydown", closeModalByEscape);
-  window.addEventListener("mousedown", closeModalByEscape);
+  document.addEventListener("keydown", closeModalByEscape);
+  document.addEventListener("mousedown", closeModalByEscape);
 }
 function openCloseOverlay() {
   closeOverlay.classList.add("page__background_opened");
@@ -68,14 +68,12 @@ function closeCloseOverlay() {
 function closeModal(modal) {
   modal.classList.remove("popup_opened");
   closeCloseOverlay();
-  window.removeEventListener("keydown", closeModalByEscape);
-  window.removeEventListener("mousedown", closeModalByEscape);
+  document.removeEventListener("keydown", closeModalByEscape);
+  document.removeEventListener("mousedown", closeModalByEscape);
 }
-function closeAllModals() {
-  closeCardModal();
-  closeEdit();
-  closeBigImg();
-  closeCloseOverlay();
+function closeAllModals(event) {
+  const openedModal = document.querySelector(".popup_opened")
+  closeModal(openedModal);  
 }
 
 function closeModalByEscape(event) {
@@ -89,13 +87,10 @@ closeOverlay.addEventListener("click", closeAllModals);
 function openEdit() {
   fillProfileForm();
   checkInitialFormValidity(profileModal.querySelector("form"), pageSettings);
-  openCloseOverlay();
   openModal(profileModal);
 }
 function closeEdit() {
   closeModal(profileModal);
-  closeCloseOverlay();
-  window.removeEventListener("keydown", closeModalByEscape);
 }
 
 // reset form functions
@@ -149,30 +144,18 @@ const createNewCard = (props) => {
 
   cardLinkTitle.textContent = localName;
   cardLinkInput.src = localLink;
-  cardLinkInput.alt = "picture";
+  cardLinkInput.alt = "Photo of " + localName;
   clonedCard.querySelector("#heart").addEventListener("click", changeHeart);
   function changeHeart() {
     const chosenHeart = clonedCard.querySelector("#heart");
-    if (
-      chosenHeart.getAttribute("style") ===
-      "background-image: url(./images/heart.svg)"
-    ) {
-      chosenHeart.setAttribute(
-        "style",
-        "background-image: url(./images/black-hearth.svg)"
-      );
-    } else {
-      chosenHeart.setAttribute(
-        "style",
-        "background-image: url(./images/heart.svg)"
-      );
-    }
-  }
+      chosenHeart.classList.toggle("card__background_active")
+    } 
+  
 
   clonedCard
     .querySelector(".card__delete-button")
     .addEventListener("click", (e) => {
-      e.target.closest(".card__gallery").remove();
+      clonedCard.remove();
     });
 
   function openBigImg(e) {

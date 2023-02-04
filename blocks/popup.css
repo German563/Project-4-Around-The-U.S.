@@ -179,18 +179,6 @@
     left: 0;
 }
 
-.popup__background {
-    display: none;
-    width: 100%;
-    height: 120%;
-    opacity: 0.2;
-    position: absolute;
-    z-index: 0;
-}
-
-.popup__background_opened {
-    display: flex;
-}
 
 @media only screen and (min-width: 320px) and (max-width: 768px) {
 
