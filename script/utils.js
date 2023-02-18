@@ -38,8 +38,7 @@ function openModal(modal) {
   }
   function closeEdit() {
     closeModal(profileModal);
-  }
-
+  } openEditButton.addEventListener("click", openEdit);
 closeProfileModalButton.addEventListener("click", closeEdit);
 
 function openBigImg(e) {
