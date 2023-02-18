@@ -1,3 +1,5 @@
+// import  FormValidator from './FormValidator.js';
+// import Card from './Card.js';
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -53,48 +55,7 @@ function fillProfileForm() {
   nameInput.value = galleryName.textContent;
   titleInput.value = galleryTitle.textContent;
 }
-function openModal(modal) {
-  openCloseOverlay();
-  modal.classList.add("popup_opened");
-  document.addEventListener("keydown", closeModalByEscape);
-  closeOverlay.addEventListener("mousedown", closeModalOnRemoteClick);
-}
-function closeModalOnRemoteClick(evt) {
-  if (evt.target === evt.currentTarget) {
-    closeOpenedModal();
-  }
-}
-function openCloseOverlay() {
-  closeOverlay.classList.add("page__background_opened");
-}
-function closeCloseOverlay() {
-  closeOverlay.classList.remove("page__background_opened");
-}
-function closeModal(modal) {
-  modal.classList.remove("popup_opened");
-  closeCloseOverlay();
-  document.removeEventListener("keydown", closeModalByEscape);
-  closeOverlay.removeEventListener("mousedown", closeModalOnRemoteClick);
-}
-function closeOpenedModal(event) {
-  const openedModal = document.querySelector(".popup_opened");
-  closeModal(openedModal);
-}
 
-function closeModalByEscape(event) {
-  if (event.key === "Escape") {
-    closeOpenedModal();
-  }
-}
-
-function openEdit() {
-  fillProfileForm();
-  checkInitialFormValidity(profileModal.querySelector("form"), pageSettings);
-  openModal(profileModal);
-}
-function closeEdit() {
-  closeModal(profileModal);
-}
 
 // reset form functions
 function resetPlaceForm() {
@@ -104,8 +65,6 @@ function resetEditForm() {
   formEdit.reset();
 }
 
-openEditButton.addEventListener("click", openEdit);
-closeProfileModalButton.addEventListener("click", closeEdit);
 
 profileModal.addEventListener("submit", function () {
   galleryName.textContent = nameInput.value;
@@ -113,91 +72,4 @@ profileModal.addEventListener("submit", function () {
   resetEditForm();
   closeEdit();
 });
-// add card
 
-const galleryButton = document.querySelector(".gallery__button");
-const closeButtonNewPlace = document.querySelector("#closeButtonNewPlace");
-
-function openCardModal() {
-  checkInitialFormValidity(popupAddCard.querySelector("form"), pageSettings);
-  openModal(popupAddCard);
-}
-function closeCardModal() {
-  closeModal(popupAddCard);
-}
-galleryButton.addEventListener("click", openCardModal);
-closeButtonNewPlace.addEventListener("click", closeCardModal);
-
-//new card creation//
-// new place modal
-
-const cardTemplate = document
-  .querySelector("#card-template")
-  .content.querySelector(".card__gallery");
-const cardElement = cardTemplate.cloneNode(true);
-const listContainer = document.querySelector(".card__area");
-
-const createNewCard = (props) => {
-  const localName = props.name;
-  const localLink = props.link;
-  const localCardTemplate = props.cardTemplate;
-  const clonedCard = localCardTemplate.cloneNode(true);
-  const cardLinkTitle = clonedCard.querySelector(".card__ellipsis");
-  const cardLinkInput = clonedCard.querySelector(".card__image");
-
-  cardLinkTitle.textContent = localName;
-  cardLinkInput.src = localLink;
-  cardLinkInput.alt = "Photo of " + localName;
-  clonedCard.querySelector("#heart").addEventListener("click", changeHeart);
-  function changeHeart() {
-    const chosenHeart = clonedCard.querySelector("#heart");
-    chosenHeart.classList.toggle("card__background_active");
-  }
-
-  clonedCard
-    .querySelector(".card__delete-button")
-    .addEventListener("click", (e) => {
-      clonedCard.remove();
-    });
-
-  function openBigImg(e) {
-    openModal(bigImg);
-    bigImg.style = "background-image: url(" + cardLinkInput.src + " )";
-    newCardLinkTitle.textContent =
-      clonedCard.querySelector(".card__ellipsis").textContent;
-  }
-  cardLinkInput.addEventListener("click", openBigImg);
-
-  return clonedCard;
-};
-const bigImg = document.querySelector(".popup_type_foto");
-function closeBigImg() {
-  closeModal(bigImg);
-}
-deleteBigImg.addEventListener("click", closeBigImg);
-
-// create new card
-
-formPlace.addEventListener("submit", (e) => {
-  const clonedCard = createNewCard({
-    name: document.getElementById("type_card-name").value,
-    link: document.getElementById("type_card-url").value,
-    cardTemplate: cardTemplate,
-  });
-  placesList.prepend(clonedCard);
-  closeCardModal(popupAddCard);
-  resetPlaceForm();
-});
-
-const populateCards = () => {
-  initialCards.forEach((item) => {
-    const cardPropsObj = {
-      name: item.name,
-      link: item.link,
-      cardTemplate: cardTemplate,
-    };
-    placesList.append(createNewCard(cardPropsObj));
-  });
-  fillProfileForm(profileModal);
-};
-populateCards();
