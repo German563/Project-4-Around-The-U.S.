@@ -1,5 +1,5 @@
-// import  FormValidator from './FormValidator.js';
-// import Card from './Card.js';
+import FormValidator from "./FormValidator.js";
+import Card from './Card.js';
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -28,48 +28,58 @@ const initialCards = [
 ];
 
 const profileModal = document.querySelector(".popup_type_edit-profile");
-const popupAddCard = document.querySelector(".popup_type_add-card");
-const openEditButton = document.querySelector(".gallery__pencil");
-const closeProfileModalButton = profileModal.querySelector(".popup__close");
-const saveProfileModal = profileModal.querySelector(".popup__button");
-// inputs for person
-const nameInput = document.forms.profile.elements.name;
-const titleInput = document.forms.profile.elements.title;
-// inputs for new card
-const cardLinkTitle = document.querySelector("#form__place");
-const cardLinkInput = document.querySelector("#type_card-url");
-const galleryName = document.querySelector(".gallery__header");
-const galleryTitle = document.querySelector(".gallery__subtext");
-const galleryLink = document.querySelector(".popup__input_type_card-link");
-const createButton = document.querySelector(".button_active");
-const newCardLinkTitle = document.querySelector(".popup__title-foto");
+
 const placesList = document.querySelector(".card__area");
 // All forms
 const formEdit = document.getElementById("form__edit");
 const formPlace = document.getElementById("form__place");
-// Close buttons
-const deleteBigImg = document.querySelector("#closeButtonFoto");
-const closeOverlay = document.querySelector(".page__background");
-
-function fillProfileForm() {
-  nameInput.value = galleryName.textContent;
-  titleInput.value = galleryTitle.textContent;
-}
 
 
-// reset form functions
-function resetPlaceForm() {
-  formPlace.reset();
-}
-function resetEditForm() {
-  formEdit.reset();
-}
+const cardTemplate = document.querySelector("#card-template").content.querySelector(".card__gallery");
 
 
-profileModal.addEventListener("submit", function () {
-  galleryName.textContent = nameInput.value;
-  galleryTitle.textContent = titleInput.value;
-  resetEditForm();
-  closeEdit();
+
+formPlace.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+
+  const newCard = new Card({
+    name: document.getElementById("type_card-name").value,
+    link: document.getElementById("type_card-url").value,
+    cardTemplate: cardTemplate,
+  });
+
+  placesList.prepend(newCard.getElement());
+  closeCardModal();
+  resetPlaceForm();
 });
+
+initialCards.forEach((cardData) => {
+  const newCard = new Card({
+    name: cardData.name,
+    link: cardData.link,
+    cardTemplate: cardTemplate,
+  });
+
+  placesList.append(newCard.getElement());
+});
+
+// from.FormValidator
+
+// Form validator configuration options
+const pageSettings = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
+// Create FormValidator instances
+const profileFormValidator = new FormValidator(pageSettings, formEdit);
+const newPlaceFormValidator = new FormValidator(pageSettings, formPlace);
+
+// Call enableValidation method to enable form validation
+profileFormValidator.enableValidation();
+newPlaceFormValidator.enableValidation();
 

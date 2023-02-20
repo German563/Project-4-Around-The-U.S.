@@ -1,4 +1,4 @@
-class FormValidator {
+export default class FormValidator {
   constructor(config, formElement) {
     this._config = config;
     this._formElement = formElement;
@@ -9,7 +9,7 @@ class FormValidator {
       this._config.submitButtonSelector
     );
   }
-
+  
   _showInputError(inputElement, errorMessage) {
     const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(this._config.inputErrorClass);
@@ -55,6 +55,15 @@ class FormValidator {
     });
     this._toggleButtonState();
   }
+  _checkInitialFormValidity(formElement, pageSettings) { 
+    this._inputElements = [ 
+      ...formElement.querySelectorAll(pageSettings.inputSelector), 
+    ]; 
+    this._buttonElement = formElement.querySelector( 
+      pageSettings.submitButtonSelector 
+    ); 
+    this._toggleButtonState(pageSettings.inputSelector); 
+  } 
 
   resetValidation() {
     this._inputList.forEach((inputElement) => {
@@ -64,20 +73,5 @@ class FormValidator {
   }
 }
 
-// Form validator configuration options
-const pageSettings = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
-};
 
-// Create FormValidator instances
-const profileFormValidator = new FormValidator(pageSettings, formEdit);
-const newPlaceFormValidator = new FormValidator(pageSettings, formPlace);
 
-// Call enableValidation method to enable form validation
-profileFormValidator.enableValidation();
-newPlaceFormValidator.enableValidation();
