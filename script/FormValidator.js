@@ -58,8 +58,5 @@ export default class FormValidator {
         this._toggleButtonState();
       });
     });
-    document
-      .querySelector(".gallery__button")
-      .addEventListener("click", this._toggleButtonState.bind(this));
   }
 }
