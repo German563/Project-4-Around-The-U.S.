@@ -26,7 +26,6 @@ const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
-
 const profileModal = document.querySelector(".popup_type_edit-profile");
 
 const placesList = document.querySelector(".card__area");
@@ -34,7 +33,7 @@ const placesList = document.querySelector(".card__area");
 const formEdit = document.getElementById("form__edit");
 const formPlace = document.getElementById("form__place");
 
-
+// Card Template
 const cardTemplate = document.querySelector("#card-template").content.querySelector(".card__gallery");
 
 
@@ -63,7 +62,7 @@ initialCards.forEach((cardData) => {
   placesList.append(newCard.getElement());
 });
 
-// from.FormValidator
+
 
 // Form validator configuration options
 const pageSettings = {
@@ -82,4 +81,5 @@ const newPlaceFormValidator = new FormValidator(pageSettings, formPlace);
 // Call enableValidation method to enable form validation
 profileFormValidator.enableValidation();
 newPlaceFormValidator.enableValidation();
+
 

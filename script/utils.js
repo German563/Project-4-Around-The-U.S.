@@ -14,7 +14,6 @@ const galleryLink = document.querySelector(".popup__input_type_card-link");
 const createButton = document.querySelector(".button_active");
 const newCardLinkTitle = document.querySelector(".popup__title-foto");
 
-
 const closeOverlay = document.querySelector(".page__background");
 const imageInCard = document.querySelector("#myImage");
 
@@ -77,14 +76,15 @@ function openEdit() {
 }
 function closeEdit() {
   closeModal(profileModal);
-} 
+}
 function closeBigImg() {
   closeModal(bigImg);
 }
 openEditButton.addEventListener("click", openEdit);
 closeProfileModalButton.addEventListener("click", closeEdit);
-document.querySelector("#closeButtonFoto").addEventListener("click", closeBigImg);
-
+document
+  .querySelector("#closeButtonFoto")
+  .addEventListener("click", closeBigImg);
 
 function openCardModal() {
   openModal(popupAddCard);
@@ -104,7 +104,5 @@ function closeModalImage() {
 }
 deleteBigImg.addEventListener("click", closeModalImage());
 
-
 galleryButton.addEventListener("click", openCardModal);
 closeButtonNewPlace.addEventListener("click", closeCardModal);
-

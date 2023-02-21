@@ -9,16 +9,19 @@ export default class FormValidator {
       this._config.submitButtonSelector
     );
   }
-  
   _showInputError(inputElement, errorMessage) {
-    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+    const errorElement = this._formElement.querySelector(
+      `#${inputElement.id}-error`
+    );
     inputElement.classList.add(this._config.inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._config.errorClass);
   }
 
   _hideInputError(inputElement) {
-    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+    const errorElement = this._formElement.querySelector(
+      `#${inputElement.id}-error`
+    );
     inputElement.classList.remove(this._config.inputErrorClass);
     errorElement.classList.remove(this._config.errorClass);
     errorElement.textContent = "";
@@ -33,7 +36,9 @@ export default class FormValidator {
   }
 
   _toggleButtonState() {
-    const isValid = this._inputList.every((inputElement) => inputElement.validity.valid);
+    const isValid = this._inputList.every(
+      (inputElement) => inputElement.validity.valid
+    );
     if (isValid) {
       this._buttonElement.removeAttribute("disabled");
       this._buttonElement.classList.remove(this._config.inactiveButtonClass);
@@ -53,25 +58,8 @@ export default class FormValidator {
         this._toggleButtonState();
       });
     });
-    this._toggleButtonState();
-  }
-  _checkInitialFormValidity(formElement, pageSettings) { 
-    this._inputElements = [ 
-      ...formElement.querySelectorAll(pageSettings.inputSelector), 
-    ]; 
-    this._buttonElement = formElement.querySelector( 
-      pageSettings.submitButtonSelector 
-    ); 
-    this._toggleButtonState(pageSettings.inputSelector); 
-  } 
-
-  resetValidation() {
-    this._inputList.forEach((inputElement) => {
-      this._hideInputError(inputElement);
-    });
-    this._toggleButtonState();
+    document
+      .querySelector(".gallery__button")
+      .addEventListener("click", this._toggleButtonState.bind(this));
   }
 }
-
-
-
