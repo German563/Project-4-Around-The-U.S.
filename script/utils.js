@@ -6,7 +6,7 @@ const closeProfileModalButton = profileModal.querySelector(".popup__close");
 const saveProfileModal = profileModal.querySelector(".popup__button");
 
 const galleryButton = document.querySelector(".gallery__button");
-// inputs for new card
+
 const cardLinkTitle = document.querySelector("#form__place");
 const cardLinkInput = document.querySelector("#type_card-url");
 
@@ -76,6 +76,7 @@ function openEdit() {
 }
 function closeEdit() {
   closeModal(profileModal);
+  
 }
 function closeBigImg() {
   closeModal(bigImg);
