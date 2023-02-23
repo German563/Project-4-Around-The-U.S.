@@ -1,6 +1,4 @@
 import {
-  openEditButton,
-  galleryButton,
   openModulesButtons,
 } from "./constants.js";
 export class FormValidator {
