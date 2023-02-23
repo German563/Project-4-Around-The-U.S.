@@ -1,13 +1,15 @@
-export default class FormValidator {
+import {openEditButton, galleryButton} from "./constants.js";
+export class FormValidator {
   constructor(config, formElement) {
     this._config = config;
     this._formElement = formElement;
     this._inputList = Array.from(
-      this._formElement.querySelectorAll(this._config.inputSelector)
-    );
+    this._formElement.querySelectorAll(this._config.inputSelector));
     this._buttonElement = this._formElement.querySelector(
       this._config.submitButtonSelector
     );
+    galleryButton.addEventListener("click", this.resetValidation.bind(this));
+    openEditButton.addEventListener("click", this.resetValidation.bind(this));
   }
   _showInputError(inputElement, errorMessage) {
     const errorElement = this._formElement.querySelector(
@@ -47,7 +49,24 @@ export default class FormValidator {
       this._buttonElement.classList.add(this._config.inactiveButtonClass);
     }
   }
+  _emptyToggleButtonState() {
+    const isEmpty = this.inputElement === "";
+    if (isEmpty) {
+      this._buttonElement.removeAttribute("disabled");
+      this._buttonElement.classList.remove(this._config.inactiveButtonClass);
+    } else {
+      this._buttonElement.setAttribute("disabled", true);
+      this._buttonElement.classList.add(this._config.inactiveButtonClass);
+    }
+  }
+  resetValidation() {
+    this._toggleButtonState();
 
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement)
+    });
+
+  }
   enableValidation() {
     this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
@@ -59,4 +78,6 @@ export default class FormValidator {
       });
     });
   }
+  
 }
+

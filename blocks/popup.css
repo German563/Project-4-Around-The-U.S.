@@ -31,10 +31,10 @@
 }
 
 .popup {
+    position: fixed;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s 0.5s, opacity 0.5s linear;
-    position: absolute;
     max-width: calc(430px - 72px);
     max-height: calc(330px - 36px);
     left: calc(50% - 215px);
@@ -155,6 +155,10 @@
 }
 
 .popup_type_foto {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
     background-image: url(../images/lago-di-braies.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -162,9 +166,7 @@
     background-color: transparent;
     height: 100%;
     width: 100%;
-    z-index: 2;
-
-
+    z-index: 1;
 }
 
 .popup__title-foto {

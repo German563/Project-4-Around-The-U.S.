@@ -1,31 +1,8 @@
-const profileModal = document.querySelector(".popup_type_edit-profile");
-const popupAddCard = document.querySelector(".popup_type_add-card");
-
-const openEditButton = document.querySelector(".gallery__pencil");
-const closeProfileModalButton = profileModal.querySelector(".popup__close");
-const saveProfileModal = profileModal.querySelector(".popup__button");
-
-const galleryButton = document.querySelector(".gallery__button");
-
-const cardLinkTitle = document.querySelector("#form__place");
-const cardLinkInput = document.querySelector("#type_card-url");
-
-const galleryLink = document.querySelector(".popup__input_type_card-link");
-const createButton = document.querySelector(".button_active");
-const newCardLinkTitle = document.querySelector(".popup__title-foto");
-
-const closeOverlay = document.querySelector(".page__background");
-const imageInCard = document.querySelector("#myImage");
-
-const bigImg = document.querySelector(".popup_type_foto");
-const nameInput = document.forms.profile.elements.name;
-const galleryName = document.querySelector(".gallery__header");
-const titleInput = document.forms.profile.elements.title;
-const galleryTitle = document.querySelector(".gallery__subtext");
-const deleteBigImg = document.querySelector("#closeButtonFoto");
-const formEdit = document.getElementById("form__edit");
-const formPlace = document.getElementById("form__place");
-
+import {profileModal, openEditButton, closeButtons, galleryButton, popupAddCard, closeOverlay,bigImg, nameInput
+,galleryName,titleInput,galleryTitle,formEdit    
+} from "./constants.js";
+import {FormValidator} from "./FormValidator.js";
+import {pageSettings} from "./index.js";
 function fillProfileForm() {
   nameInput.value = galleryName.textContent;
   titleInput.value = galleryTitle.textContent;
@@ -53,7 +30,7 @@ function openCloseOverlay() {
 function closeCloseOverlay() {
   closeOverlay.classList.remove("page__background_opened");
 }
-function closeModal(modal) {
+ function closeModal(modal) {
   modal.classList.remove("popup_opened");
   closeCloseOverlay();
   document.removeEventListener("keydown", closeModalByEscape);
@@ -82,7 +59,7 @@ function closeBigImg() {
   closeModal(bigImg);
 }
 openEditButton.addEventListener("click", openEdit);
-closeProfileModalButton.addEventListener("click", closeEdit);
+
 document
   .querySelector("#closeButtonFoto")
   .addEventListener("click", closeBigImg);
@@ -94,16 +71,18 @@ function openCardModal() {
 function closeCardModal() {
   closeModal(popupAddCard);
 }
-function resetPlaceForm() {
-  formPlace.reset();
-}
+
 function resetEditForm() {
   formEdit.reset();
 }
-function closeModalImage() {
-  bigImg.classList.remove("popup_opened");
-}
-deleteBigImg.addEventListener("click", closeModalImage());
+
 
 galleryButton.addEventListener("click", openCardModal);
 closeButtonNewPlace.addEventListener("click", closeCardModal);
+closeButtons.forEach((button) => {
+  // find the closest popup 
+  const popup = button.closest('.popup');
+  // set the listener
+  button.addEventListener('click', () => closeModal(popup));
+});
+export {openModal, closeModal};

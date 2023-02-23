@@ -1,3 +1,5 @@
+import {openModal} from "./utils.js";
+import {bigImg} from "./constants.js";
 export default class Card {
   constructor({ name, link, cardTemplate }) {
     this._name = name;
@@ -13,19 +15,19 @@ export default class Card {
     this._cardLinkInput.alt = `Photo of ${this._name}`;
 
     this._heartButton = this._element.querySelector("#heart");
-    this._heartButton.addEventListener("click", this._toggleLike.bind(this));
+   
 
     this._newCardLinkTitle = document.querySelector(".popup__title-foto");
 
     this._deleteButton = this._element.querySelector(".card__delete-button");
     this._closeButton = this._element.querySelector("#closeButtonFoto");
-    this._deleteButton.addEventListener(
-      "click",
-      this._handleDeleteClick.bind(this)
-    );
-    this._cardLinkInput.addEventListener("click", this._openBigImg.bind(this));
+    this._setEventListeners();
   }
-
+  _setEventListeners() {
+    this._heartButton.addEventListener("click", this._toggleLike.bind(this));
+    this._cardLinkInput.addEventListener("click", this._openBigImg.bind(this));
+    this._deleteButton.addEventListener("click", this._handleDeleteClick.bind(this));
+  }
   _getTemplate() {
     return this._cardTemplate.cloneNode(true);
   }
@@ -37,20 +39,10 @@ export default class Card {
   _handleDeleteClick() {
     this._element.remove();
   }
-
-  _closeModalImage() {
-    const bigImg = document.querySelector(".popup_type_foto");
-    bigImg.classList.remove("popup_opened");
-  }
-  _openBigImg(e) {
-    const bigImg = document.querySelector(".popup_type_foto");
-    bigImg.classList.add("popup_opened");
-    closeOverlay.classList.add("page__background_opened");
-    document.addEventListener("keydown", closeModalByEscape);
-    closeOverlay.addEventListener("mousedown", closeModalOnRemoteClick);
-    bigImg.style = "background-image: url(" + this._cardLinkInput.src + " )";
-    this._newCardLinkTitle.textContent = this._name;
-  }
+  _openBigImg(e) { 
+    bigImg.style = "background-image: url(" + this._cardLinkInput.src + " )"; 
+    this._newCardLinkTitle.textContent = this._name; 
+    openModal(bigImg)};
 
   getElement() {
     return this._element;

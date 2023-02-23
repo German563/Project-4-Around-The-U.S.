@@ -1,5 +1,13 @@
-import FormValidator from "./FormValidator.js";
-import Card from './Card.js';
+import {FormValidator} from "./FormValidator.js";
+import Card from "./Card.js";
+import {
+  formEdit,
+  formPlace,
+  popupAddCard,
+  cardTemplate,
+  placesList,
+} from "./constants.js";
+import { closeModal } from "./utils.js";
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -26,46 +34,44 @@ const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
-const profileModal = document.querySelector(".popup_type_edit-profile");
 
-const placesList = document.querySelector(".card__area");
-// All forms
-const formEdit = document.getElementById("form__edit");
-const formPlace = document.getElementById("form__place");
+
 
 // Card Template
-const cardTemplate = document.querySelector("#card-template").content.querySelector(".card__gallery");
 
+function resetPlaceForm() {
+  formPlace.reset();
+}
+function closeCardModal() {
+  closeModal(popupAddCard);
+}
 
+function createCard(name, link, cardTemplate) {
+  const newCard = new Card({
+    name: name,
+    link: link,
+    cardTemplate: cardTemplate
+  });
+  return newCard;
+}
 
 formPlace.addEventListener("submit", (evt) => {
   evt.preventDefault();
 
-  const newCard = new Card({
-    name: document.getElementById("type_card-name").value,
-    link: document.getElementById("type_card-url").value,
-    cardTemplate: cardTemplate,
-  });
-
+  const typeCardName = document.getElementById("type_card-name").value;
+  const typeCardUrl = document.getElementById("type_card-url").value;
+  const newCard = createCard(typeCardName, typeCardUrl, cardTemplate);
   placesList.prepend(newCard.getElement());
+
   closeCardModal();
   resetPlaceForm();
-});
 
-initialCards.forEach((cardData) => {
-  const newCard = new Card({
-    name: cardData.name,
-    link: cardData.link,
-    cardTemplate: cardTemplate,
-  });
-
-  placesList.append(newCard.getElement());
 });
 
 
 
 // Form validator configuration options
-const pageSettings = {
+export const pageSettings = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
@@ -74,12 +80,22 @@ const pageSettings = {
   errorClass: "popup__error_visible",
 };
 
-// Create FormValidator instances
-const profileFormValidator = new FormValidator(pageSettings, formEdit);
-const newPlaceFormValidator = new FormValidator(pageSettings, formPlace);
-
-// Call enableValidation method to enable form validation
-profileFormValidator.enableValidation();
-newPlaceFormValidator.enableValidation();
 
 
+const profileFormValidator = new FormValidator(pageSettings, formEdit); 
+const newPlaceFormValidator = new FormValidator(pageSettings, formPlace); 
+
+profileFormValidator.enableValidation(); 
+newPlaceFormValidator.enableValidation(); 
+
+
+
+
+ 
+
+initialCards.forEach((cardData) => {
+  const typeCardName = cardData.name;
+  const typeCardUrl = cardData.link;
+  const newCard = createCard(typeCardName, typeCardUrl, cardTemplate);
+  placesList.append(newCard.getElement());
+});
