@@ -1,10 +1,11 @@
-import {openEditButton, galleryButton} from "./constants.js";
+import { openEditButton, galleryButton } from "./constants.js";
 export class FormValidator {
   constructor(config, formElement) {
     this._config = config;
     this._formElement = formElement;
     this._inputList = Array.from(
-    this._formElement.querySelectorAll(this._config.inputSelector));
+      this._formElement.querySelectorAll(this._config.inputSelector)
+    );
     this._buttonElement = this._formElement.querySelector(
       this._config.submitButtonSelector
     );
@@ -63,9 +64,8 @@ export class FormValidator {
     this._toggleButtonState();
 
     this._inputList.forEach((inputElement) => {
-      this._hideInputError(inputElement)
+      this._hideInputError(inputElement);
     });
-
   }
   enableValidation() {
     this._formElement.addEventListener("submit", (evt) => {
@@ -78,6 +78,4 @@ export class FormValidator {
       });
     });
   }
-  
 }
-

@@ -1,8 +1,19 @@
-import {profileModal, openEditButton, closeButtons, galleryButton, popupAddCard, closeOverlay,bigImg, nameInput
-,galleryName,titleInput,galleryTitle,formEdit    
+import {
+  profileModal,
+  openEditButton,
+  closeButtons,
+  galleryButton,
+  popupAddCard,
+  closeOverlay,
+  bigImg,
+  nameInput,
+  galleryName,
+  titleInput,
+  galleryTitle,
+  formEdit,
 } from "./constants.js";
-import {FormValidator} from "./FormValidator.js";
-import {pageSettings} from "./index.js";
+import { FormValidator } from "./FormValidator.js";
+import { pageSettings } from "./index.js";
 function fillProfileForm() {
   nameInput.value = galleryName.textContent;
   titleInput.value = galleryTitle.textContent;
@@ -30,7 +41,7 @@ function openCloseOverlay() {
 function closeCloseOverlay() {
   closeOverlay.classList.remove("page__background_opened");
 }
- function closeModal(modal) {
+function closeModal(modal) {
   modal.classList.remove("popup_opened");
   closeCloseOverlay();
   document.removeEventListener("keydown", closeModalByEscape);
@@ -53,7 +64,6 @@ function openEdit() {
 }
 function closeEdit() {
   closeModal(profileModal);
-  
 }
 function closeBigImg() {
   closeModal(bigImg);
@@ -76,13 +86,12 @@ function resetEditForm() {
   formEdit.reset();
 }
 
-
 galleryButton.addEventListener("click", openCardModal);
 closeButtonNewPlace.addEventListener("click", closeCardModal);
 closeButtons.forEach((button) => {
-  // find the closest popup 
-  const popup = button.closest('.popup');
-  // set the listener
-  button.addEventListener('click', () => closeModal(popup));
+
+  const popup = button.closest(".popup");
+
+  button.addEventListener("click", () => closeModal(popup));
 });
-export {openModal, closeModal};
+export { openModal, closeModal };

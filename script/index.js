@@ -1,4 +1,4 @@
-import {FormValidator} from "./FormValidator.js";
+import { FormValidator } from "./FormValidator.js";
 import Card from "./Card.js";
 import {
   formEdit,
@@ -35,8 +35,6 @@ const initialCards = [
   },
 ];
 
-
-
 // Card Template
 
 function resetPlaceForm() {
@@ -50,7 +48,7 @@ function createCard(name, link, cardTemplate) {
   const newCard = new Card({
     name: name,
     link: link,
-    cardTemplate: cardTemplate
+    cardTemplate: cardTemplate,
   });
   return newCard;
 }
@@ -65,10 +63,7 @@ formPlace.addEventListener("submit", (evt) => {
 
   closeCardModal();
   resetPlaceForm();
-
 });
-
-
 
 // Form validator configuration options
 export const pageSettings = {
@@ -80,18 +75,11 @@ export const pageSettings = {
   errorClass: "popup__error_visible",
 };
 
+const profileFormValidator = new FormValidator(pageSettings, formEdit);
+const newPlaceFormValidator = new FormValidator(pageSettings, formPlace);
 
-
-const profileFormValidator = new FormValidator(pageSettings, formEdit); 
-const newPlaceFormValidator = new FormValidator(pageSettings, formPlace); 
-
-profileFormValidator.enableValidation(); 
-newPlaceFormValidator.enableValidation(); 
-
-
-
-
- 
+profileFormValidator.enableValidation();
+newPlaceFormValidator.enableValidation();
 
 initialCards.forEach((cardData) => {
   const typeCardName = cardData.name;
