@@ -70,10 +70,6 @@ function closeBigImg() {
 }
 openEditButton.addEventListener("click", openEdit);
 
-document
-  .querySelector("#closeButtonFoto")
-  .addEventListener("click", closeBigImg);
-
 function openCardModal() {
   openModal(popupAddCard);
 }
@@ -87,11 +83,8 @@ function resetEditForm() {
 }
 
 galleryButton.addEventListener("click", openCardModal);
-closeButtonNewPlace.addEventListener("click", closeCardModal);
 closeButtons.forEach((button) => {
-
   const popup = button.closest(".popup");
-
   button.addEventListener("click", () => closeModal(popup));
 });
 export { openModal, closeModal };

@@ -30,3 +30,6 @@ export const galleryTitle = document.querySelector(".gallery__subtext");
 export const deleteBigImg = document.querySelector("#closeButtonFoto");
 
 export const popupAddCard = document.querySelector(".popup_type_add-card");
+export const openModulesButtons = document.querySelectorAll(
+  "button[type='button']"
+);

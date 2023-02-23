@@ -50,7 +50,7 @@ function createCard(name, link, cardTemplate) {
     link: link,
     cardTemplate: cardTemplate,
   });
-  return newCard;
+  return newCard.getElement();
 }
 
 formPlace.addEventListener("submit", (evt) => {
@@ -59,10 +59,12 @@ formPlace.addEventListener("submit", (evt) => {
   const typeCardName = document.getElementById("type_card-name").value;
   const typeCardUrl = document.getElementById("type_card-url").value;
   const newCard = createCard(typeCardName, typeCardUrl, cardTemplate);
-  placesList.prepend(newCard.getElement());
+  placesList.prepend(newCard);
 
   closeCardModal();
   resetPlaceForm();
+  newPlaceFormValidator.resetValidation();
+  profileFormValidator.resetValidation();
 });
 
 // Form validator configuration options
@@ -85,5 +87,5 @@ initialCards.forEach((cardData) => {
   const typeCardName = cardData.name;
   const typeCardUrl = cardData.link;
   const newCard = createCard(typeCardName, typeCardUrl, cardTemplate);
-  placesList.append(newCard.getElement());
+  placesList.append(newCard);
 });

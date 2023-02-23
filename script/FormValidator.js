@@ -1,4 +1,8 @@
-import { openEditButton, galleryButton } from "./constants.js";
+import {
+  openEditButton,
+  galleryButton,
+  openModulesButtons,
+} from "./constants.js";
 export class FormValidator {
   constructor(config, formElement) {
     this._config = config;
@@ -9,8 +13,12 @@ export class FormValidator {
     this._buttonElement = this._formElement.querySelector(
       this._config.submitButtonSelector
     );
-    galleryButton.addEventListener("click", this.resetValidation.bind(this));
-    openEditButton.addEventListener("click", this.resetValidation.bind(this));
+
+    openModulesButtons.forEach((openModulesButtons) => {
+      openModulesButtons.addEventListener("click", () => {
+        this.resetValidation();
+      });
+    });
   }
   _showInputError(inputElement, errorMessage) {
     const errorElement = this._formElement.querySelector(
@@ -50,16 +58,7 @@ export class FormValidator {
       this._buttonElement.classList.add(this._config.inactiveButtonClass);
     }
   }
-  _emptyToggleButtonState() {
-    const isEmpty = this.inputElement === "";
-    if (isEmpty) {
-      this._buttonElement.removeAttribute("disabled");
-      this._buttonElement.classList.remove(this._config.inactiveButtonClass);
-    } else {
-      this._buttonElement.setAttribute("disabled", true);
-      this._buttonElement.classList.add(this._config.inactiveButtonClass);
-    }
-  }
+
   resetValidation() {
     this._toggleButtonState();
 
