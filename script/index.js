@@ -6,7 +6,6 @@ import {
   popupAddCard,
   cardTemplate,
   placesList,
-  openModulesButtons,
 } from "./constants.js";
 import { closeModal } from "./utils.js";
 const initialCards = [
@@ -65,12 +64,6 @@ formPlace.addEventListener("submit", (evt) => {
   closeCardModal();
   resetPlaceForm();
   newPlaceFormValidator.resetValidation();
-});
-
-openModulesButtons.forEach((openModulesButton) => {
-  openModulesButton.addEventListener("click", () => {
-    newPlaceFormValidator.resetValidation();
-  });
 });
 
 // Form validator configuration options
