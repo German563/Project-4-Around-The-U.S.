@@ -1,6 +1,3 @@
-import {
-  openModulesButtons,
-} from "./constants.js";
 export class FormValidator {
   constructor(config, formElement) {
     this._config = config;
@@ -11,12 +8,6 @@ export class FormValidator {
     this._buttonElement = this._formElement.querySelector(
       this._config.submitButtonSelector
     );
-
-    openModulesButtons.forEach((openModulesButtons) => {
-      openModulesButtons.addEventListener("click", () => {
-        this.resetValidation();
-      });
-    });
   }
   _showInputError(inputElement, errorMessage) {
     const errorElement = this._formElement.querySelector(

@@ -6,6 +6,7 @@ import {
   popupAddCard,
   cardTemplate,
   placesList,
+  openModulesButtons,
 } from "./constants.js";
 import { closeModal } from "./utils.js";
 const initialCards = [
@@ -64,7 +65,12 @@ formPlace.addEventListener("submit", (evt) => {
   closeCardModal();
   resetPlaceForm();
   newPlaceFormValidator.resetValidation();
-  profileFormValidator.resetValidation();
+});
+
+openModulesButtons.forEach((openModulesButton) => {
+  openModulesButton.addEventListener("click", () => {
+    newPlaceFormValidator.resetValidation();
+  });
 });
 
 // Form validator configuration options
@@ -77,7 +83,7 @@ export const pageSettings = {
   errorClass: "popup__error_visible",
 };
 
-const profileFormValidator = new FormValidator(pageSettings, formEdit);
+export const profileFormValidator = new FormValidator(pageSettings, formEdit);
 const newPlaceFormValidator = new FormValidator(pageSettings, formPlace);
 
 profileFormValidator.enableValidation();

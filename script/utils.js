@@ -12,8 +12,7 @@ import {
   galleryTitle,
   formEdit,
 } from "./constants.js";
-import { FormValidator } from "./FormValidator.js";
-import { pageSettings } from "./index.js";
+import { profileFormValidator } from "./index.js";
 function fillProfileForm() {
   nameInput.value = galleryName.textContent;
   titleInput.value = galleryTitle.textContent;
@@ -60,6 +59,7 @@ function closeModalByEscape(event) {
 
 function openEdit() {
   fillProfileForm();
+  profileFormValidator.resetValidation();
   openModal(profileModal);
 }
 function closeEdit() {
