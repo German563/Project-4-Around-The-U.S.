@@ -1,10 +1,11 @@
-import { openModal } from "./utils.js";
-import { bigImg } from "./constants.js";
+import { bigImg } from "./index.js";
+
 export default class Card {
   constructor({ name, link, cardTemplate }) {
     this._name = name;
     this._link = link;
     this._cardTemplate = cardTemplate;
+    // this._onImageClick = onImageClick;
 
     this._element = this._getTemplate();
     this._cardLinkTitle = this._element.querySelector(".card__ellipsis");
@@ -41,10 +42,11 @@ export default class Card {
   _handleDeleteClick() {
     this._element.remove();
   }
-  _openBigImg(e) {
-    bigImg.style = "background-image: url(" + this._cardLinkInput.src + " )";
+  _openBigImg() {
+    document.querySelector(".popup_type_foto").style =
+      "background-image: url(" + this._cardLinkInput.src + " )";
     this._newCardLinkTitle.textContent = this._name;
-    openModal(bigImg);
+    bigImg.openIt();
   }
 
   getElement() {
