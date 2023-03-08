@@ -5,7 +5,7 @@ import PopupWithImage from "./PopupWithImage.js";
 import { FormValidator } from "./FormValidator.js";
 import Card from "./Card.js";
 const profileModal = new PopupWithForm(".popup_type_edit-profile");
-
+import "../pages/index.css"
 export const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card__gallery");
