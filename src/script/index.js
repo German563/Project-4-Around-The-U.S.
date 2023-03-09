@@ -6,6 +6,7 @@ import { FormValidator } from "./FormValidator.js";
 import Card from "./Card.js";
 const profileModal = new PopupWithForm(".popup_type_edit-profile");
 import "../pages/index.css"
+import "../vendor/fonts.css"
 export const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card__gallery");
@@ -91,15 +92,15 @@ const initialCards = [
   },
 ];
 
-function createCard(name, link, cardTemplate, onImageClick) {
+function createCard(name, link, cardTemplate) {
   const newCard = new Card({
     name: name,
     link: link,
     cardTemplate: cardTemplate,
-    onImageClick: onImageClick,
   });
   return newCard.getElement();
 }
+
 
 const addCardSection = new Section({
   items: [],

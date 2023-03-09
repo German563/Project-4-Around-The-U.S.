@@ -5,9 +5,10 @@ export default class PopupWithImage extends Popup {
     super(popupSelector);
   }
   openIt() {
+    
     document.addEventListener("keyup", this._handleEscClose);
     this._popup.classList.add("popup_opened");
     closeOverlay.classList.add("page__background_opened");
-    // }
+   
   }
 }

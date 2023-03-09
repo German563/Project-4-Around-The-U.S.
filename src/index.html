@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./src/vendor/fonts.css" />
-    <link rel="icon" type="image/x-icon" href="./src/favicon.ico" />
-    <link rel="stylesheet" href="./src/pages/index.css" />
+    <link rel="icon" type="image/x-icon" href="../src/favicon.ico" />
     <title>Around US</title>
   </head>
 
@@ -14,15 +12,15 @@
     <div class="page">
       <div class="page__background"></div>
       <header class="header">
-        <img
+        <img ;
           class="header__logo"
-          src="./src/images/header__logo.svg"
+          src="<%= require('../src/images/header__logo.svg') %>" 
           alt="header__logo"
         />
       </header>
       <main class="main">
         <section class="gallery">
-          <div class="gallery__text">
+          <div  class="gallery__text">
             <div class="gallery__image"></div>
 
             <div class="gallery__wrapper gallery__eclipsis">
@@ -33,7 +31,8 @@
               <p class="gallery__subtext">Explorer</p>
             </div>
             <button class="gallery__button" type="button">
-              <img src="./src/images/plus.svg" alt="plus" />
+              <img src="<%= require('../src/images/plus.svg') %>"
+              alt="plus" />
             </button>
           </div>
         </section>
@@ -150,7 +149,7 @@
       </footer>
     </div>
 
-    <script type="module" src="../src/script/index.js" defer></script>
+
 
 
   </body>
