@@ -1,4 +1,4 @@
-import { placesList } from "./index.js";
+import { placesList } from "./constants.js";
 export default class Section {
   constructor({ items, renderer }, containerSelector) {
     this._items = items;

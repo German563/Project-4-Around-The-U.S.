@@ -1,4 +1,4 @@
-import { closeOverlay } from "./index.js";
+import { closeOverlay } from "./constants.js";
 export default class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);

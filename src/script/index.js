@@ -1,3 +1,23 @@
+import {
+  cardTemplate,
+  placesList,
+  openEditButton,
+  closeButtons,
+  saveProfileModal,
+  galleryButton,
+  formEdit,
+  formPlace,
+  galleryLink,
+  createButton,
+  newCardLinkTitle,
+  closeOverlay,
+  imageInCard,
+  nameInput,
+  galleryName,
+  titleInput,
+  galleryTitle,
+  deleteBigImg,
+} from "./constants.js";
 import PopupWithForm from "./PopupWithForm.js";
 import Section from "./Section.js";
 import UserInfo from "./UserInfo.js";
@@ -5,39 +25,10 @@ import PopupWithImage from "./PopupWithImage.js";
 import { FormValidator } from "./FormValidator.js";
 import Card from "./Card.js";
 const profileModal = new PopupWithForm(".popup_type_edit-profile");
-import "../pages/index.css"
-import "../vendor/fonts.css"
-export const cardTemplate = document
-  .querySelector("#card-template")
-  .content.querySelector(".card__gallery");
-export const placesList = document.querySelector(".card__area");
-export const bigImg = new PopupWithImage(".popup_type_foto");
-export const openEditButton = document.querySelector(".gallery__pencil");
-export const closeButtons = document.querySelectorAll(".popup__close");
-export const saveProfileModal = document.querySelector(".popup__button");
-
-export const galleryButton = document.querySelector(".gallery__button");
-
-export const formEdit = document.getElementById("form__edit");
-export const formPlace = document.getElementById("form__place");
-
-export const galleryLink = document.querySelector(
-  ".popup__input_type_card-link"
-);
-export const createButton = document.querySelector(".button_active");
-export const newCardLinkTitle = document.querySelector(".popup__title-foto");
-
-export const closeOverlay = document.querySelector(".page__background");
-export const imageInCard = document.querySelector(".card__image");
-
-export const nameInput = document.forms.profile.elements.name;
-export const galleryName = document.querySelector(".gallery__header");
-export const titleInput = document.forms.profile.elements.title;
-export const galleryTitle = document.querySelector(".gallery__subtext");
-export const deleteBigImg = document.querySelector("#closeButtonFoto");
-
+import "../pages/index.css";
+import "../vendor/fonts.css";
 const popupAddCard = new PopupWithForm(".popup_type_add-card");
-
+export const bigImg = new PopupWithImage(".popup_type_foto");
 galleryButton.addEventListener("click", () => {
   popupAddCard.openIt();
 });
@@ -100,7 +91,6 @@ function createCard(name, link, cardTemplate) {
   });
   return newCard.getElement();
 }
-
 
 const addCardSection = new Section({
   items: [],
