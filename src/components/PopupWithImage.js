@@ -5,8 +5,9 @@ export default class PopupWithImage extends Popup {
   }
  open = ({name, link}) => {
   super.open();
-  debugger
+  this._newCardLinkTitle = document.querySelector(".popup__title-foto");
+  
   this._popup.style = "background-image: url(" + link + " )";
-  this._popup.textContent = name;
+  this._newCardLinkTitle.textContent = name;
   }
 }
