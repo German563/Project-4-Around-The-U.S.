@@ -29,7 +29,6 @@ const profileModal = new PopupWithForm(".popup_type_edit-profile", (data) => {
 });
 import "../pages/index.css";
 import "../vendor/fonts.css";
-import { data } from "autoprefixer";
 
 const popupAddCard = new PopupWithForm(".popup_type_add-card");
 const bigImg = new PopupWithImage(".popup_type_foto");
@@ -40,7 +39,7 @@ galleryButton.addEventListener("click", () => {
 openEditButton.addEventListener("click", () => {
   const data = userInfo.getUserInfo()
   profileModal.open();
-  nameInput.value = data.name; 
+  nameInput.value = data.name;
   titleInput.value = data.job; 
   profileFormValidator.resetValidation();
 });
@@ -49,12 +48,12 @@ const userInfo = new UserInfo({
   nameSelector: ".gallery__header",
   jobSelector: ".gallery__subtext"
 });
-function fillProfileForm() { 
-  
-  nameInput.value = data.name; 
-  titleInput.value = data.job; 
-  userInfo.setUserInfo(data);
-} 
+function fillProfileForm() {
+  userInfo.setUserInfo({
+    name: nameInput.value,
+    job: titleInput.value
+  });
+}
 
 profileModal.setEventListener();
 bigImg.setEventListener();
@@ -117,6 +116,6 @@ newPlaceFormValidator.enableValidation();
 document
   .querySelector(".popup_type_edit-profile")
   .addEventListener("submit", function () {
-    fillProfileForm();
+    fillProfileForm()
     profileModal.close();
   });
