@@ -25,12 +25,15 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import { FormValidator } from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 const profileModal = new PopupWithForm(".popup_type_edit-profile", (data) => {
-  userInfo.setUserInfo(data)
+  userInfo.setUserInfo(data);
+  fillProfileForm()
 });
 import "../pages/index.css";
 import "../vendor/fonts.css";
 
-const popupAddCard = new PopupWithForm(".popup_type_add-card");
+const popupAddCard = new PopupWithForm(".popup_type_add-card", (data) => {
+  handleAddCardSubmit()
+});
 const bigImg = new PopupWithImage(".popup_type_foto");
 galleryButton.addEventListener("click", () => {
   newPlaceFormValidator.resetValidation();
@@ -95,7 +98,6 @@ function handleAddCardSubmit(evt) {
   popupAddCard.close();
 }
 
-formPlace.addEventListener("submit", handleAddCardSubmit);
 
 // Form validator configuration options
 export const pageSettings = {
@@ -113,9 +115,10 @@ const newPlaceFormValidator = new FormValidator(pageSettings, formPlace);
 profileFormValidator.enableValidation();
 newPlaceFormValidator.enableValidation();
 
-document
-  .querySelector(".popup_type_edit-profile")
-  .addEventListener("submit", function () {
-    fillProfileForm()
+document 
+  .querySelector(".popup_type_edit-profile") 
+  .addEventListener("submit", function () { 
+    fillProfileForm();
     profileModal.close();
-  });
+  }); 
+  formPlace.addEventListener("submit", handleAddCardSubmit); 
