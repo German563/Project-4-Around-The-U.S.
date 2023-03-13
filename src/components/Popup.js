@@ -11,7 +11,7 @@ export default class Popup {
     this._closeOverlay.classList.add("page__background_opened");
 
   }
-  close = () => {
+  close () {
     this._popup.classList.remove("popup_opened");
     this._closeOverlay.classList.remove("page__background_opened");
     document.removeEventListener("keyup", this._handleEscClose);

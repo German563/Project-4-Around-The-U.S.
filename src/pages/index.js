@@ -24,27 +24,37 @@ import UserInfo from "../components/UserInfo.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import { FormValidator } from "../components/FormValidator.js";
 import Card from "../components/Card.js";
-const profileModal = new PopupWithForm(".popup_type_edit-profile");
+const profileModal = new PopupWithForm(".popup_type_edit-profile", (data) => {
+  userInfo.setUserInfo(data)
+});
 import "../pages/index.css";
 import "../vendor/fonts.css";
+import { data } from "autoprefixer";
 
 const popupAddCard = new PopupWithForm(".popup_type_add-card");
 const bigImg = new PopupWithImage(".popup_type_foto");
 galleryButton.addEventListener("click", () => {
+  newPlaceFormValidator.resetValidation();
   popupAddCard.open();
 });
 openEditButton.addEventListener("click", () => {
+  const data = userInfo.getUserInfo()
   profileModal.open();
+  nameInput.value = data.name; 
+  titleInput.value = data.job; 
   profileFormValidator.resetValidation();
 });
 
-
-
 const userInfo = new UserInfo({
-  nameSelector: ".popup__input_type_name",
-  jobSelector: ".popup__input_type_description",
+  nameSelector: ".gallery__header",
+  jobSelector: ".gallery__subtext"
 });
-
+function fillProfileForm() { 
+  
+  nameInput.value = data.name; 
+  titleInput.value = data.job; 
+  userInfo.setUserInfo(data);
+} 
 
 profileModal.setEventListener();
 bigImg.setEventListener();
@@ -76,17 +86,14 @@ const cardList = new Section(
   },
   ".card__area"
 );
-// bigImg.open()
 cardList.renderItems();
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  const typeCardName = document.getElementById("type_card-name").value;
-  const typeCardUrl = document.getElementById("type_card-url").value;
-  const newCard = createCard(typeCardName, typeCardUrl, cardTemplate);
+  const formValues = popupAddCard._getInputValues();
+  const newCard = createCard(formValues["nameNew"], formValues["titleURL"], cardTemplate);
   cardList.addItem(newCard);
   popupAddCard.close();
-  newPlaceFormValidator.resetValidation();
 }
 
 formPlace.addEventListener("submit", handleAddCardSubmit);
@@ -110,6 +117,6 @@ newPlaceFormValidator.enableValidation();
 document
   .querySelector(".popup_type_edit-profile")
   .addEventListener("submit", function () {
- userInfo.setUserInfo();
+    fillProfileForm();
     profileModal.close();
   });

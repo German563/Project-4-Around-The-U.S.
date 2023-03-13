@@ -11,9 +11,8 @@ export default class UserInfo {
     };
   }
 
-  setUserInfo(name, job) { {
-      name.value = document.querySelector(".gallery__header").textContent;
-      job.value = document.querySelector(".gallery__subtext").textContent;
-    }
+  setUserInfo({ name, job }) {
+    this._nameElement.textContent = name;
+    this._jobElement.textContent = job;
   }
 }
