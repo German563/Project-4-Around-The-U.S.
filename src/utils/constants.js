@@ -18,7 +18,6 @@ export const galleryLink = document.querySelector(
 export const createButton = document.querySelector(".button_active");
 export const newCardLinkTitle = document.querySelector(".popup__title-foto");
 
-
 export const imageInCard = document.querySelector(".card__image");
 
 export const nameInput = document.forms.profile.elements.name;
@@ -26,7 +25,6 @@ export const galleryName = document.querySelector(".gallery__header");
 export const titleInput = document.forms.profile.elements.title;
 export const galleryTitle = document.querySelector(".gallery__subtext");
 export const deleteBigImg = document.querySelector("#closeButtonFoto");
-
 
 export const initialCards = [
   {
@@ -54,3 +52,11 @@ export const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
+export const pageSettings = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};

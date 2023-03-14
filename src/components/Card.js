@@ -5,7 +5,6 @@ export default class Card {
     this._cardTemplate = cardTemplate;
     this._handleCardClick = handleCardClick;
 
-
     this._element = this._getTemplate();
     this._cardLinkTitle = this._element.querySelector(".card__ellipsis");
     this._cardLinkInput = this._element.querySelector(".card__image");
@@ -15,8 +14,6 @@ export default class Card {
     this._cardLinkInput.alt = `Photo of ${this._name}`;
 
     this._heartButton = this._element.querySelector("#heart");
-
-    this._newCardLinkTitle = document.querySelector(".popup__title-foto");
 
     this._deleteButton = this._element.querySelector(".card__delete-button");
     this._setEventListeners();
@@ -34,7 +31,7 @@ export default class Card {
     return this._cardTemplate.cloneNode(true);
   }
   _setBigImage() {
-    this._handleCardClick({link: this._link, name: this._name})
+    this._handleCardClick({ link: this._link, name: this._name });
   }
   _toggleLike() {
     this._heartButton.classList.toggle("card__background_active");
@@ -43,7 +40,6 @@ export default class Card {
   _handleDeleteClick() {
     this._element.remove();
   }
-
 
   getElement() {
     return this._element;
