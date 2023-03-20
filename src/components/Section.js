@@ -11,7 +11,9 @@ export default class Section {
       this.addItem(newItem);
     });
   }
-
+  setItems(items) {
+    this._items = items;
+  }
   addItem(element) {
     this._containerWrapper.prepend(element);
   }
