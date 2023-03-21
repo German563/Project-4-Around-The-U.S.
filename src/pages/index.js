@@ -28,10 +28,13 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import { FormValidator } from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import Api from "../utils/api.js";
-const profileModal = new PopupWithForm(
-  ".popup_type_edit-profile"
-);
-export const deleteModal = new PopupWithSubmit(
+const profileModal = new PopupWithForm(".popup_type_edit-profile", (formValues) => {
+  api.changeProfile(formValues) 
+  .then((formValues) =>{  
+    userInfo.setUserInfo({name: formValues.name, title: formValues.about})
+  })
+});
+const deleteModal = new PopupWithSubmit(
   ".popup_type_delete"
 );
 
@@ -44,6 +47,7 @@ export const api = new Api({
 //  "Content-Type": "application/json"
   }); 
   const popupAddCard = new PopupWithForm(".popup_type_add-card", async (data) => {
+    console.log(data)
     const card = await api.addCard(data.nameNew, data.titleURL);
     if (card) {
       cardList.addItem(createCard(data.nameNew, data.titleURL, cardTemplate));
@@ -84,7 +88,16 @@ function createCard(name, link, cardTemplate) {
   return newCard.getElement();
 }
 
-
+function handleAddCardSubmit() {
+  const formValues = popupAddCard.getInputValues();
+  const newCard = createCard(
+    formValues["nameNew"],
+    formValues["titleURL"],
+    cardTemplate
+  );
+  console.log("New card created:", newCard);
+  popupAddCard.close();
+}
 
 const cardList = new Section(
   {items: [],
@@ -92,7 +105,6 @@ const cardList = new Section(
       const typeCardName = cardData.name;
       const typeCardUrl = cardData.link;
       const newCard = createCard(typeCardName, typeCardUrl, cardTemplate);
-
       return newCard;
     },
   },
@@ -106,15 +118,7 @@ api.getInitialCards()
     cardList.renderItems();
   });
 
-function handleAddCardSubmit() {
-  const formValues = popupAddCard.getInputValues();
-  const newCard = createCard(
-    formValues["nameNew"],
-    formValues["titleURL"],
-    cardTemplate
-  );
-  popupAddCard.close();
-}
+
 
 const profileFormValidator = new FormValidator(pageSettings, formEdit);
 const newPlaceFormValidator = new FormValidator(pageSettings, formPlace);
@@ -128,10 +132,7 @@ newPlaceFormValidator.enableValidation();
   .then((userData) =>{  
     userInfo.setUserInfo({name: userData.name, title: userData.about})
   })
-  api.changeProfile() 
-  .then((userData) =>{  
-    userInfo.setUserInfo({name: userData.name, title: userData.about})
-  })
+
   api.getLikes()
   .then((cards) => {
     const likesArray = cards.map(card => card.likes);
@@ -146,7 +147,7 @@ newPlaceFormValidator.enableValidation();
       // get the card ID from the data attribute on the like button element
       const cardId = likeButton.dataset.cardId;
       
-      // call the addLike() function to add a like to the card with the specified ID
+  
       api.addLike(cardId)
         .then((updatedCard) => {
           // update the like count on the card element
@@ -158,3 +159,4 @@ newPlaceFormValidator.enableValidation();
         });
     });
   });
+

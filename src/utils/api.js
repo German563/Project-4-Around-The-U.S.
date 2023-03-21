@@ -28,13 +28,18 @@ export default class  Api {
           console.log("Error", response.status, response.statusText)
       }
   }
-  async addCard() {
-    const response = await fetch(`${this._url}/cards`, {
+  async addCard(name, link) {
+    debugger
+    const response = await fetch(`${this._url}cards`, {
       method: "POST",
       headers: {
         authorization: this._token,
         "Content-Type": "application/json"
       },
+      body: JSON.stringify({
+        name: ""+ name +  "",
+        link: ""+ link +  "",
+      })
     });
     if (response.ok) {
       const data = await response.json();
@@ -44,16 +49,18 @@ export default class  Api {
     }
   }
 
-  async changeProfile() {
+  async changeProfile(formValues) {
+
     const response = await fetch(`${this._url}/users/me`, {
+    
       method: "PATCH",
       headers: {
         authorization: this._token,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        name: "Marie Skłodowska Curie",
-        about: "Physicist and Chemist"
+        name: ""+ formValues.name +  "",
+        about: ""+ formValues.title +  "",
       })
     });
     if (response.ok) {
@@ -74,9 +81,23 @@ export default class  Api {
               console.log("Error", response.status, response.statusText)
           }
       }
-      async addLike(cardId) {
-        const response = await fetch(`${this._url}/cards/_id`, {
-          method: "PUT",
+      // async addLike(cardId) {
+      //   const response = await fetch(`${this._url}/cards/${cardId}`, {
+      //     method: "PUT",
+      //     headers: {
+      //       authorization: this._token
+      //     }
+      //   }); 
+      
+      //   if (response.ok) {
+      //     return response.json();
+      //   } else {
+      //     console.log("Error", response.status, response.statusText);
+      //   }
+      // }
+      async deleteCard(cardId) {
+        const response = await fetch(`${this._url}/cards/${cardId}`, {
+          method: "DELETE",
           headers: {
             authorization: this._token
           }
@@ -88,7 +109,7 @@ export default class  Api {
           console.log("Error", response.status, response.statusText);
         }
       }
-      
+
   }
 
 
