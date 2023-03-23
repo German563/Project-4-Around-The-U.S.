@@ -56,8 +56,26 @@ export default class Api {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: "" + formValues.name + "",
-        about: "" + formValues.title + "",
+        name: formValues.name,
+        about: formValues.title,
+      }),
+    });
+    if (response.ok) {
+      return response.json();
+    } else {
+      console.log("Error", response.status, response.statusText);
+    }
+  }
+  async changeAvatar(formValues) {
+
+    const response = await fetch(`${this._url}users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        avatar: formValues.avatar,
       }),
     });
     if (response.ok) {
@@ -97,27 +115,10 @@ export default class Api {
   }
   async deleteCard(cardId) {
     const response = await fetch(`${this._url}/cards/${cardId}`, {
-      method: "PATCH",
-      headers: {
-        authorization: this._token,
-      },
-    });
-
-    if (response.ok) {
-      return response.json();
-    } else {
-      console.log("Error", response.status, response.statusText);
-    }
-  }
-  async changeAvatar() {
-    const response = await fetch(`${this._url}me/avatar`, {
       method: "DELETE",
       headers: {
         authorization: this._token,
       },
-      body: JSON.stringify({
-        avatar: "" + formValues.avatar + "",
-      }),
     });
 
     if (response.ok) {
@@ -126,4 +127,5 @@ export default class Api {
       console.log("Error", response.status, response.statusText);
     }
   }
+
 }

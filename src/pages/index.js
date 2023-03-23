@@ -56,13 +56,14 @@ export const api = new Api({
     }
     handleAddCardSubmit()
   });
-const popupChangeAvatar = new PopupWithSubmit(".popup_type_avatar", async (data) => {
-  api.changeAvatar()
-  .then((res) => {
-console.log("result", res)
+const popupChangeAvatar = new PopupWithForm(".popup_type_avatar", (formValues) => {
+  api.changeAvatar(formValues)
+  .then((formValues) => {
+    avatarInfo.setAvatar(formValues.avatar)
+    console.log(formValues.avatar)
     });
   })
-  
+
 const bigImg = new PopupWithImage(".popup_type_foto");
 galleryButton.addEventListener("click", () => {
   newPlaceFormValidator.resetValidation();
@@ -74,7 +75,6 @@ openEditButton.addEventListener("click", () => {
   profileModal.open();
   nameInput.value = data.name;
   titleInput.value = data.job;
-  // avatarInput.value = data.avatar;
   profileFormValidator.resetValidation();
 });
 
@@ -88,10 +88,7 @@ const avatarInfo = new UserInfo ({
 })
 
 galleryAvatar.addEventListener("click", () => {
-  const data = avatarInfo.getAvatarInfo();
   popupChangeAvatar.open();
-  avatarInput.value = data.avatar;
-
 });
 
 
@@ -178,8 +175,8 @@ cardList.renderItems();
     userId = userData._id
     cardList.setItems(cards);
     cardList.renderItems();
-
-    userInfo.setUserInfo({name: userData.name, title: userData.about})
+    avatarInfo.setAvatar(userData.avatar)
+    userInfo.setUserInfo({name: userData.name, title: userData.about, avatar:userData.avatar})
   
   })
 
