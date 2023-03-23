@@ -5,12 +5,13 @@ export default class Popup {
     this._closeOverlay = document.querySelector(".page__background");
 
     this.close.bind(this);
-
+    this.open.bind(this);
     this._handlecloseOverlay;
   }
 
-  open () {
+  open() {
     document.addEventListener("keyup", this._handleEscClose);
+    
         this._popup.classList.add("popup_opened");
 
     this._closeOverlay.classList.add("page__background_opened");

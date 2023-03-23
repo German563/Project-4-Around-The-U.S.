@@ -20,7 +20,9 @@ export const newCardLinkTitle = document.querySelector(".popup__title-foto");
 
 export const imageInCard = document.querySelector(".card__image");
 
+export const galleryAvatar = document.querySelector(".gallery__image");
 export const nameInput = document.forms.profile.elements.name;
+export const avatarInput = document.forms.profile.elements.avatar;
 export const galleryName = document.querySelector(".gallery__header");
 export const titleInput = document.forms.profile.elements.title;
 export const galleryTitle = document.querySelector(".gallery__subtext");
