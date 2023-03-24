@@ -84,10 +84,10 @@
     background-position: center;
     opacity: 0.8;    
 }
-.gallery__image:hover .gallery__image_focus {
+.gallery__image:hover .gallery__newImage {
 display: flex;
 }
-.gallery__image_focus {
+.gallery__newImage {
 display: none;
 width: 26px;
 height: 26px;
