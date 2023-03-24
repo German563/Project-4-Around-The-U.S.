@@ -28,7 +28,6 @@ export const titleInput = document.forms.profile.elements.title;
 export const galleryTitle = document.querySelector(".gallery__subtext");
 export const deleteBigImg = document.querySelector("#closeButtonFoto");
 
-
 export const pageSettings = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",

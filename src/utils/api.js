@@ -1,3 +1,5 @@
+import { debug } from "webpack";
+
 export default class Api {
   constructor(options) {
     this._url = options.baseUrl;
@@ -67,7 +69,6 @@ export default class Api {
     }
   }
   async changeAvatar(formValues) {
-
     const response = await fetch(`${this._url}users/me/avatar`, {
       method: "PATCH",
       headers: {
@@ -127,5 +128,4 @@ export default class Api {
       console.log("Error", response.status, response.statusText);
     }
   }
-
 }

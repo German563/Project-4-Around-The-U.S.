@@ -12,16 +12,23 @@
     <div class="page">
       <div class="page__background"></div>
       <header class="header">
-        <img ;
+        <img
+          ;
           class="header__logo"
-          src="<%= require('../src/images/header__logo.svg') %>" 
+          src="<%= require('../src/images/header__logo.svg') %>"
           alt="header__logo"
         />
       </header>
       <main class="main">
         <section class="gallery">
-          <div  class="gallery__text">
-            <div class="gallery__image"><img class="gallery__image_focus" src="<%= require('../src/images/pencil.svg') %>" alt=""></div>
+          <div class="gallery__text">
+            <div class="gallery__image">
+              <img
+                class="gallery__image_focus"
+                src="<%= require('../src/images/pencil.svg') %>"
+                alt=""
+              />
+            </div>
 
             <div class="gallery__wrapper gallery__eclipsis">
               <div class="gallery__column">
@@ -31,8 +38,7 @@
               <p class="gallery__subtext">Explorer</p>
             </div>
             <button class="gallery__button" type="button">
-              <img src="<%= require('../src/images/plus.svg') %>"
-              alt="plus" />
+              <img src="<%= require('../src/images/plus.svg') %>" alt="plus" />
             </button>
           </div>
         </section>
@@ -54,7 +60,6 @@
                   id="heart"
                   class="card__button card__background"
                 ></button>
-                
               </div>
               <span class="card__likes"></span>
             </li>
@@ -95,7 +100,13 @@
                 for="title"
                 class="popup__label"
               ></label>
-              <button type="submit" class="button popup__button">Save</button>
+              <button
+                id="button_edit_profile"
+                type="submit"
+                class="button popup__button"
+              >
+                Save
+              </button>
             </form>
           </div>
         </div>
@@ -133,7 +144,12 @@
                 for="titleURL"
                 class="popup__label"
               ></label>
-              <button type="submit" class="button popup__button" action="">
+              <button
+                id="button_add_card"
+                type="submit"
+                class="button popup__button"
+                action=""
+              >
                 Create
               </button>
             </form>
@@ -149,33 +165,38 @@
         <div class="popup popup_type_delete">
           <div class="popup__content">
             <h3 class="popup__title">Are you sure?</h3>
-          <button class="popup__close" ></button>
-          <form action="" class="popup__form">
-          <button type="submit" class="button popup__button" >Yes</button>
-        </form>
+            <button class="popup__close"></button>
+            <form action="" class="popup__form">
+              <button type="submit" class="button popup__button">Yes</button>
+            </form>
           </div>
-  
         </div>
-        
+
         <div class="popup popup_type_avatar">
           <div class="popup__content">
             <h3 class="popup__title">Change profile picture</h3>
-          <button class="popup__close" ></button>
-          <form action="" class="popup__form">
-            <input placeholder="Avatar link" name="avatar" class="popup__input popup__input_type_card-link" type="url">
-          <button type="submit" class="button popup__button" >Save</button>
-        </form>
+            <button class="popup__close"></button>
+            <form action="" class="popup__form">
+              <input
+                placeholder="Avatar link"
+                name="avatar"
+                class="popup__input popup__input_type_card-link"
+                type="url"
+              />
+              <button
+                type="submit"
+                id="avatar_button"
+                class="button popup__button"
+              >
+                Save
+              </button>
+            </form>
           </div>
-  
         </div>
       </main>
       <footer class="footer">
         <p class="footer__copyright">© 2022 Around The U.S.</p>
       </footer>
     </div>
-
-
-
-
   </body>
 </html>

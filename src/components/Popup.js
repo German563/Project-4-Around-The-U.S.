@@ -11,8 +11,8 @@ export default class Popup {
 
   open() {
     document.addEventListener("keyup", this._handleEscClose);
-    
-        this._popup.classList.add("popup_opened");
+
+    this._popup.classList.add("popup_opened");
 
     this._closeOverlay.classList.add("page__background_opened");
   }

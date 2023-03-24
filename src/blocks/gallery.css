@@ -71,7 +71,6 @@
 
 .gallery__image {
     position: relative;
-    /* background-image: url(../images/jacques-cousteau.jpg); */
     min-width: 120px;
     min-height: 120px;
     background-repeat: no-repeat;
