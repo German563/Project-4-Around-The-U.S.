@@ -1,5 +1,6 @@
 export class FormValidator {
   constructor(config, formElement) {
+
     this._config = config;
     this._formElement = formElement;
     this._inputList = Array.from(
@@ -10,6 +11,7 @@ export class FormValidator {
     );
   }
   _showInputError(inputElement, errorMessage) {
+    debugger
     const errorElement = this._formElement.querySelector(
       `#${inputElement.id}-error`
     );

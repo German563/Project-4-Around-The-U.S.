@@ -11,6 +11,7 @@ export const galleryButton = document.querySelector(".gallery__button");
 
 export const formEdit = document.getElementById("form__edit");
 export const formPlace = document.getElementById("form__place");
+export const formAvatar = document.getElementById("form__avatar");
 
 export const galleryLink = document.querySelector(
   ".popup__input_type_card-link"

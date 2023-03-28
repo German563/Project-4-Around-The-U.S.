@@ -4,6 +4,7 @@ import {
   galleryButton,
   formEdit,
   formPlace,
+  formAvatar,
   nameInput,
   titleInput,
   pageSettings,
@@ -26,14 +27,18 @@ const profileModal = new PopupWithForm(
     });
   }
 );
-const deleteModal = new PopupWithSubmit(".popup_type_delete");
 let userId;
+const deleteModal = new PopupWithSubmit(".popup_type_delete");
+
 import "../pages/index.css";
 import "../vendor/fonts.css";
-import { async } from "regenerator-runtime";
+
 export const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/cohort-3-en/",
-  token: "e311eb36-6a4d-4f2d-8784-2a64b37b741e",
+  headers: {
+    authorization: "e311eb36-6a4d-4f2d-8784-2a64b37b741e",
+    "Content-Type": "application/json"
+  }
 });
 const popupAddCard = new PopupWithForm(".popup_type_add-card", async (data) => {
   const card = await api.addCard(data.nameNew, data.titleURL);
@@ -44,12 +49,12 @@ const popupAddCard = new PopupWithForm(".popup_type_add-card", async (data) => {
 });
 const popupChangeAvatar = new PopupWithForm(
   ".popup_type_avatar",
-  (formValues) => {
+  async (formValues) => {
     api.changeAvatar(formValues).then((formValues) => {
       avatarInfo.setAvatar(formValues.avatar);
-      console.log(formValues.avatar);
     });
   }
+  
 );
 
 const bigImg = new PopupWithImage(".popup_type_foto");
@@ -76,6 +81,8 @@ const avatarInfo = new UserInfo({
 
 galleryAvatar.addEventListener("click", () => {
   popupChangeAvatar.open();
+  avatarFormValidator.resetValidation();
+  
 });
 
 profileModal.setEventListener();
@@ -171,7 +178,9 @@ Promise.all([api.getInitialCards(), api.getUserData()]).then(
 
 const profileFormValidator = new FormValidator(pageSettings, formEdit);
 const newPlaceFormValidator = new FormValidator(pageSettings, formPlace);
+const avatarFormValidator = new FormValidator(pageSettings, formAvatar);
 
+avatarFormValidator.enableValidation();
 profileFormValidator.enableValidation();
 newPlaceFormValidator.enableValidation();
 
