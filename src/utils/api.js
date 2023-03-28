@@ -3,7 +3,7 @@ export default class Api {
     this._url = options.baseUrl;
     this._headers = options.headers;
   }
-  
+
   _checkResponse(response) {
     if (response.ok) {
       return response.json();
@@ -11,7 +11,7 @@ export default class Api {
       console.log("Error", response.status, response.statusText);
     }
   }
-  
+
   _request(url, options) {
     return fetch(url, options).then(this._checkResponse);
   }
@@ -22,14 +22,14 @@ export default class Api {
     });
     return response;
   }
-  
+
   async getUserData() {
     const response = await this._request(`${this._url}/users/me`, {
       headers: this._headers,
     });
     return response;
   }
-  
+
   async addCard(name, link) {
     const response = await this._request(`${this._url}cards`, {
       method: "POST",
@@ -53,7 +53,7 @@ export default class Api {
     });
     return response;
   }
-  
+
   async changeAvatar(formValues) {
     const response = await this._request(`${this._url}users/me/avatar`, {
       method: "PATCH",
@@ -72,7 +72,7 @@ export default class Api {
     });
     return response;
   }
-  
+
   async disLike(cardId) {
     const response = await this._request(`${this._url}/cards/likes/${cardId}`, {
       method: "DELETE",
@@ -80,7 +80,7 @@ export default class Api {
     });
     return response;
   }
-  
+
   async deleteCard(cardId) {
     const response = await this._request(`${this._url}/cards/${cardId}`, {
       method: "DELETE",

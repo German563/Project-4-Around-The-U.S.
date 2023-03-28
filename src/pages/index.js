@@ -37,8 +37,8 @@ export const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/cohort-3-en/",
   headers: {
     authorization: "e311eb36-6a4d-4f2d-8784-2a64b37b741e",
-    "Content-Type": "application/json"
-  }
+    "Content-Type": "application/json",
+  },
 });
 const popupAddCard = new PopupWithForm(".popup_type_add-card", async (data) => {
   const card = await api.addCard(data.nameNew, data.titleURL);
@@ -54,7 +54,6 @@ const popupChangeAvatar = new PopupWithForm(
       avatarInfo.setAvatar(formValues.avatar);
     });
   }
-  
 );
 
 const bigImg = new PopupWithImage(".popup_type_foto");
@@ -82,7 +81,6 @@ const avatarInfo = new UserInfo({
 galleryAvatar.addEventListener("click", () => {
   popupChangeAvatar.open();
   avatarFormValidator.resetValidation();
-  
 });
 
 profileModal.setEventListener();
