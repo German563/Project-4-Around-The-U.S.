@@ -1,5 +1,5 @@
 import Popup from "./Popup.js";
-
+import renderLoading from "../pages/index.js";
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, submitCallback) {
     super(popupSelector);
@@ -22,10 +22,24 @@ export default class PopupWithForm extends Popup {
   setEventListener() {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
+      renderLoading(true);
       const formValues = this.getInputValues();
-      this._submitCallback(formValues);
-      this.close();
+      const submitPromise = this._submitCallback(formValues);
+      if (!submitPromise || typeof submitPromise.then !== "function") {
+        return;
+      }
+      submitPromise
+        .then(() => {
+          this.close();
+        })
+        .catch((err) => {
+          console.log(`Error: ${err}`);
+        })
+        .finally(() => {
+          renderLoading(false);
+        });
     });
+
     super.setEventListener();
   }
 

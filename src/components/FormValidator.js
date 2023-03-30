@@ -11,7 +11,6 @@ export class FormValidator {
     );
   }
   _showInputError(inputElement, errorMessage) {
-    debugger
     const errorElement = this._formElement.querySelector(
       `#${inputElement.id}-error`
     );

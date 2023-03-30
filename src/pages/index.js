@@ -22,11 +22,18 @@ import Api from "../utils/api.js";
 const profileModal = new PopupWithForm(
   ".popup_type_edit-profile",
   (formValues) => {
-    api.changeProfile(formValues).then((formValues) => {
-      userInfo.setUserInfo({ name: formValues.name, title: formValues.about });
+    return new Promise((resolve) => {
+      api.changeProfile(formValues).then((res) => {
+        userInfo.setUserInfo({
+          name: formValues.name,
+          title: formValues.title,
+        });
+        resolve(res);
+      });
     });
   }
 );
+
 let userId;
 const deleteModal = new PopupWithSubmit(".popup_type_delete");
 
@@ -43,7 +50,16 @@ export const api = new Api({
 const popupAddCard = new PopupWithForm(".popup_type_add-card", async (data) => {
   const card = await api.addCard(data.nameNew, data.titleURL);
   if (card) {
-    cardList.addItem(createCard(data.nameNew, data.titleURL, cardTemplate));
+    cardList.addItem(
+      createCard(
+        data.nameNew,
+        data.titleURL,
+        cardTemplate,
+        card._id,
+        userId,
+        card.likes
+      )
+    );
   }
   handleAddCardSubmit();
 });
@@ -88,14 +104,14 @@ bigImg.setEventListener();
 popupAddCard.setEventListener();
 deleteModal.setEventListener();
 popupChangeAvatar.setEventListener();
-function createCard(name, link, cardTemplate, _id, userId, likes, isLiked) {
+function createCard(name, link, cardTemplate, _id, userId, _likes, isLiked) {
   const newCard = new Card({
     name: name,
     link: link,
     cardTemplate: cardTemplate,
     _id: _id,
     userId: userId,
-    likes: likes,
+    _likes: _likes,
     isLiked: isLiked,
     handleCardClick: bigImg.open,
     handleDeleteCard: (id) => {
@@ -131,8 +147,9 @@ function handleAddCardSubmit() {
     formValues["titleURL"],
     cardTemplate
   );
-  console.log("New card created:", newCard);
-  popupAddCard.close();
+  if (typeof newCard.renderItems === "function") {
+    newCard.renderItems();
+  }
 }
 
 const cardList = new Section(
@@ -182,30 +199,7 @@ avatarFormValidator.enableValidation();
 profileFormValidator.enableValidation();
 newPlaceFormValidator.enableValidation();
 
-form.addEventListener("submit", function submit(e) {
-  e.preventDefault();
-  renderLoading(true);
-  search(form.elements.entity.value, form.elements.entityId.value)
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(res.status);
-    })
-    .then((res) => {
-      console.log(res);
-      renderResult(res.name);
-    })
-    .catch((err) => {
-      console.log(`Error: ${err}`);
-      renderError(`Error: ${err}`);
-    })
-    .finally(() => {
-      renderLoading(false);
-    });
-});
-
-function renderLoading(isLoading) {
+export default function renderLoading(isLoading) {
   if (isLoading) {
     document.querySelector("#avatar_button").textContent = "Saving...";
     document.querySelector("#button_edit_profile").textContent = "Saving...";
@@ -214,6 +208,5 @@ function renderLoading(isLoading) {
     document.querySelector("#avatar_button").textContent = "Save";
     document.querySelector("#button_edit_profile").textContent = "Save";
     document.querySelector("#button_add_card").textContent = "Create";
-    S;
   }
 }
