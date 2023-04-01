@@ -1,12 +1,7 @@
 export default class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
-
     this._closeOverlay = document.querySelector(".page__background");
-
-    this.close.bind(this);
-    this.open.bind(this);
-    this._handlecloseOverlay;
   }
 
   open() {

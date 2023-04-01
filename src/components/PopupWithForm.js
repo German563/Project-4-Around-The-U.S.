@@ -1,10 +1,11 @@
 import Popup from "./Popup.js";
-import renderLoading from "../pages/index.js";
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, submitCallback) {
     super(popupSelector);
     this._submitCallback = submitCallback;
     this._form = this._popup.querySelector(".popup__form");
+    this._button = this._popup.querySelector('button[type="submit"]');
+    this._buttonText = this._button.textContent;
     this._inputSelector = ".popup__input";
   }
 
@@ -18,11 +19,11 @@ export default class PopupWithForm extends Popup {
     });
     return values;
   }
-
   setEventListener() {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      renderLoading(true);
+      this._button.textContent = "Saving...";
+      debugger;
       const formValues = this.getInputValues();
       const submitPromise = this._submitCallback(formValues);
       if (!submitPromise || typeof submitPromise.then !== "function") {
@@ -36,7 +37,7 @@ export default class PopupWithForm extends Popup {
           console.log(`Error: ${err}`);
         })
         .finally(() => {
-          renderLoading(false);
+          this._button.textContent = this._buttonText;
         });
     });
 

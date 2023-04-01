@@ -23,18 +23,22 @@ const profileModal = new PopupWithForm(
   ".popup_type_edit-profile",
   (formValues) => {
     return new Promise((resolve) => {
-      api.changeProfile(formValues).then((res) => {
-        userInfo.setUserInfo({
-          name: formValues.name,
-          title: formValues.title,
+      api
+        .changeProfile(formValues)
+        .then((res) => {
+          userInfo.setUserInfo({
+            name: formValues.name,
+            title: formValues.title,
+          });
+          resolve(res);
+        })
+        .catch((error) => {
+          console.error(error);
         });
-        resolve(res);
-      });
     });
   }
 );
-
-let userId;
+let yourId;
 const deleteModal = new PopupWithSubmit(".popup_type_delete");
 
 import "../pages/index.css";
@@ -56,19 +60,23 @@ const popupAddCard = new PopupWithForm(".popup_type_add-card", async (data) => {
         data.titleURL,
         cardTemplate,
         card._id,
-        userId,
+        yourId,
         card.likes
       )
     );
   }
-  handleAddCardSubmit();
 });
 const popupChangeAvatar = new PopupWithForm(
   ".popup_type_avatar",
   async (formValues) => {
-    api.changeAvatar(formValues).then((formValues) => {
-      avatarInfo.setAvatar(formValues.avatar);
-    });
+    await api
+      .changeAvatar(formValues)
+      .then((formValues) => {
+        avatarInfo.setAvatar(formValues.avatar);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 );
 
@@ -113,43 +121,47 @@ function createCard(name, link, cardTemplate, _id, userId, _likes, isLiked) {
     userId: userId,
     _likes: _likes,
     isLiked: isLiked,
+    yourId: yourId,
     handleCardClick: bigImg.open,
     handleDeleteCard: (id) => {
       deleteModal.open();
       deleteModal.setAction(() => {
-        api.deleteCard(id).then((res) => {
-          newCard.removeCard();
-          deleteModal.close();
-        });
+        api
+          .deleteCard(id)
+          .then((res) => {
+            newCard.removeCard();
+            deleteModal.close();
+          })
+          .catch((err) => {
+            console.log(`Error: ${err}`);
+          });
       });
     },
     handleLikeButton: (id) => {
       const isAlreadyLiked = newCard.isLiked();
       if (isAlreadyLiked) {
-        api.disLike(id).then((res) => {
-          newCard.gotCliked(res.likes);
-        });
+        api
+          .disLike(id)
+          .then((res) => {
+            newCard.setLikes(res.likes);
+          })
+          .catch((err) => {
+            console.log(`Error: ${err}`);
+          });
       } else {
-        api.addLike(id).then((res) => {
-          newCard.gotCliked(res.likes);
-        });
+        api
+          .addLike(id)
+          .then((res) => {
+            newCard.setLikes(res.likes);
+          })
+          .catch((err) => {
+            console.log(`Error: ${err}`);
+          });
       }
     },
   });
 
   return newCard.getElement();
-}
-
-function handleAddCardSubmit() {
-  const formValues = popupAddCard.getInputValues();
-  const newCard = createCard(
-    formValues["nameNew"],
-    formValues["titleURL"],
-    cardTemplate
-  );
-  if (typeof newCard.renderItems === "function") {
-    newCard.renderItems();
-  }
 }
 
 const cardList = new Section(
@@ -175,11 +187,9 @@ const cardList = new Section(
   },
   ".card__area"
 );
-cardList.renderItems();
-
 Promise.all([api.getInitialCards(), api.getUserData()]).then(
   ([cards, userData]) => {
-    userId = userData._id;
+    yourId = userData._id;
     cardList.setItems(cards);
     cardList.renderItems();
     avatarInfo.setAvatar(userData.avatar);
@@ -190,7 +200,6 @@ Promise.all([api.getInitialCards(), api.getUserData()]).then(
     });
   }
 );
-
 const profileFormValidator = new FormValidator(pageSettings, formEdit);
 const newPlaceFormValidator = new FormValidator(pageSettings, formPlace);
 const avatarFormValidator = new FormValidator(pageSettings, formAvatar);
@@ -198,15 +207,3 @@ const avatarFormValidator = new FormValidator(pageSettings, formAvatar);
 avatarFormValidator.enableValidation();
 profileFormValidator.enableValidation();
 newPlaceFormValidator.enableValidation();
-
-export default function renderLoading(isLoading) {
-  if (isLoading) {
-    document.querySelector("#avatar_button").textContent = "Saving...";
-    document.querySelector("#button_edit_profile").textContent = "Saving...";
-    document.querySelector("#button_add_card").textContent = "Saving...";
-  } else {
-    document.querySelector("#avatar_button").textContent = "Save";
-    document.querySelector("#button_edit_profile").textContent = "Save";
-    document.querySelector("#button_add_card").textContent = "Create";
-  }
-}

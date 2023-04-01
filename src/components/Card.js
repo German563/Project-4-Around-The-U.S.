@@ -1,7 +1,5 @@
-import { deleteModal, api, userId } from "/src/pages/index.js";
-import Api from "/src/utils/api.js";
-
 export default class Card {
+
   constructor({
     name,
     link,
@@ -12,28 +10,26 @@ export default class Card {
     _id,
     userId,
     _likes,
+    yourId,
   }) {
     this._name = name;
     this._link = link;
-
     this._cardTemplate = cardTemplate;
     this._handleCardClick = handleCardClick;
     this._handleDeleteCard = handleDeleteCard;
     this._handleLikeButton = handleLikeButton;
+    this._yourId = yourId;
     this._id = _id;
     this._userId = userId;
     this._likes = _likes;
-
     this._element = this._getTemplate();
     this._cardLinkTitle = this._element.querySelector(".card__ellipsis");
     this._cardLinkInput = this._element.querySelector(".card__image");
-
     this._cardLinkTitle.textContent = this._name;
     this._cardLinkInput.src = this._link;
     this._cardLinkInput.alt = `Photo of ${this._name}`;
-
     this._heartButton = this._element.querySelector("#heart");
-
+    this._cardLikes = this._element.querySelector(".card__likes");
     this._setEventListeners();
   }
   _setEventListeners() {
@@ -46,27 +42,26 @@ export default class Card {
     this._element
       .querySelector(".card__delete-button")
       .addEventListener("click", () => this._handleDeleteCard(this._id));
-    if ("eb9b4fc7dcf52812ff98973c" !== this._userId) {
+    if ( this._yourId !== this._userId) {
       this._element.querySelector(".card__delete-button").style.display =
         "none";
     }
 
     if (this.isLiked()) {
-      this.gotCliked(this._likes);
+      this.setLikes(this._likes);
     } else {
-      this._element.querySelector(".card__likes").textContent =
-        this._likes?.length;
+      this._cardLikes.textContent = this._likes?.length;
     }
   }
   isLiked() {
     return (
       this._likes?.some(
-        (person) => person._id === "eb9b4fc7dcf52812ff98973c"
+        (person) => person._id ===  this._yourId
       ) ?? false
     );
   }
 
-  gotCliked(newLikes) {
+  setLikes(newLikes) {
     this._heartButton.classList.toggle("card__background_active");
     this._likes = newLikes;
     this._element.querySelector(".card__likes").textContent = newLikes.length;

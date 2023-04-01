@@ -1,23 +1,14 @@
-
 export default class Api {
   constructor(options) {
     this._url = options.baseUrl;
     this._headers = options.headers;
   }
 
-
-  _checkResponse(response) {
-    if (response.ok) {
-      document.querySelector("#avatar_button").textContent = "Save";
-      document.querySelector("#button_edit_profile").textContent = "Save";
-      document.querySelector("#button_add_card").textContent = "Create";
-      return response.json();
-    } else {
-      console.log("Error", response.status, response.statusText);
-      document.querySelector("#avatar_button").textContent = "Saving...";
-      document.querySelector("#button_edit_profile").textContent = "Saving...";
-      document.querySelector("#button_add_card").textContent = "Saving...";
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
     }
+    return Promise.reject(`Error: ${res.status}`);
   }
 
   _request(url, options) {
@@ -96,5 +87,4 @@ export default class Api {
     });
     return response;
   }
-
 }
